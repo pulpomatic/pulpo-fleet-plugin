@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "pulpo-fleet": {
+      "type": "http",
+      "url": "https://eu1.getpulpo.com/mcp"
+    }
+  }
+}

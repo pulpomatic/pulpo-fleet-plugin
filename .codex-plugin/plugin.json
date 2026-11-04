@@ -1,0 +1,45 @@
+{
+  "name": "pulpo-fleet",
+  "version": "1.0.0",
+  "description": "Work with your Pulpo fleet from Codex: vehicles, drivers, fuel, expenses, maintenance, reminders, inspections and PulpoPay, with your own Pulpo permissions. Every change is confirmed with you first.",
+  "author": {
+    "name": "Pulpo",
+    "url": "https://www.getpulpo.com/"
+  },
+  "homepage": "https://www.getpulpo.com/",
+  "repository": "https://github.com/pulpomatic/pulpo-fleet-plugin",
+  "license": "MIT",
+  "keywords": [
+    "pulpo",
+    "fleet",
+    "vehicles",
+    "drivers",
+    "maintenance",
+    "fuel",
+    "expenses",
+    "pulpopay",
+    "mcp"
+  ],
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json",
+  "interface": {
+    "displayName": "Pulpo Fleet",
+    "shortDescription": "Read and manage your Pulpo fleet",
+    "longDescription": "Pulpo Fleet connects your Pulpo account so you can ask about and manage your fleet in plain language: vehicles and their status, insurance and contracts, drivers and assignments, fuel loads and expenses, maintenance and reminders, inspections, and PulpoPay cards, balances and funding requests.\n\nIt acts with your own Pulpo permissions: only the account, role and segments you can see. It can also make changes (create or edit records, approve expenses, assign drivers, fund cards). The skills make the assistant show you each change and wait for your yes first, and deletes, archives and money movements cannot be undone.",
+    "developerName": "Pulpo",
+    "category": "Productivity",
+    "capabilities": ["Interactive", "Read", "Write"],
+    "websiteURL": "https://www.getpulpo.com/",
+    "privacyPolicyURL": "https://www.getpulpo.com/politicas-de-cookies-y-privacidad",
+    "termsOfServiceURL": "https://www.getpulpo.com/terminos-y-condiciones",
+    "defaultPrompt": [
+      "How is my Pulpo fleet doing and what needs attention?",
+      "Summarize fuel and expenses for the last 30 days.",
+      "Which maintenance tasks and reminders are overdue or coming up?"
+    ],
+    "brandColor": "#183B73",
+    "composerIcon": "./assets/logo.png",
+    "logo": "./assets/logo.png",
+    "screenshots": []
+  }
+}

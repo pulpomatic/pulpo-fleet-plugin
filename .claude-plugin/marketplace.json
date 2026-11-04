@@ -1,0 +1,17 @@
+{
+  "name": "pulpo",
+  "description": "Pulpo's public plugins for Claude and Codex.",
+  "owner": {
+    "name": "Pulpo",
+    "url": "https://www.getpulpo.com/"
+  },
+  "plugins": [
+    {
+      "name": "pulpo-fleet",
+      "source": "./",
+      "description": "Work with your Pulpo fleet from Claude: vehicles, drivers, fuel, expenses, maintenance, reminders, inspections and PulpoPay, with your own Pulpo permissions.",
+      "version": "1.0.0",
+      "category": "productivity"
+    }
+  ]
+}

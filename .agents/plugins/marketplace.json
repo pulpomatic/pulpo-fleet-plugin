@@ -1,0 +1,20 @@
+{
+  "name": "pulpo",
+  "interface": {
+    "displayName": "Pulpo"
+  },
+  "plugins": [
+    {
+      "name": "pulpo-fleet",
+      "source": {
+        "source": "local",
+        "path": "./"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}

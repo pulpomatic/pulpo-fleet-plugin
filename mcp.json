@@ -1,0 +1,9 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/mcp.schema.json",
+  "mcpServers": {
+    "pulpo-fleet": {
+      "type": "streamable-http",
+      "url": "https://eu1.getpulpo.com/mcp"
+    }
+  }
+}
