@@ -38,9 +38,10 @@ Then run any Pulpo question; Claude opens the Pulpo sign-in the first time. In c
 ```
 codex plugin marketplace add pulpomatic/pulpo-fleet-plugin
 codex plugin add pulpo-fleet@pulpo
+codex mcp add pulpo-fleet --url https://eu1.getpulpo.com/mcp
 ```
 
-Then sign in to Pulpo when prompted. The same server can also be added without the skills with `codex mcp add pulpo-fleet --url https://eu1.getpulpo.com/mcp`.
+The last command signs you in to Pulpo. Run it even though the plugin already declares the server: Codex (checked with 0.166) exposes only part of the server's tools when the server comes from a plugin, and the entry with the same name makes it load all of them. The plugin still provides the skills.
 
 Nothing needs to be configured: sign-in is OAuth through Pulpo's identity provider (Auth0), with no client secret and no API key to copy.
 
