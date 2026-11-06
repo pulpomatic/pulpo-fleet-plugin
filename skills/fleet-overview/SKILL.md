@@ -1,6 +1,6 @@
 ---
 name: fleet-overview
-description: Answer "how is my fleet doing?" from Pulpo. Vehicle counts, counts by status or type, the fleet health score (Salud de flota), vehicles missing basic data, vehicles without driver, odometer, or insurance, expired or expiring insurance, vehicle alerts, and a short list of what needs attention. Read-only. Use for fleet size, fleet health, findings, and "what should I look at today".
+description: Answer "how is my fleet doing?" from Pulpo. Vehicle counts, counts by status or type, the fleet health score (Salud de flota), vehicles missing basic data, vehicles without driver, odometer, or insurance, expired or expiring insurance, vehicle alerts, and a short list of what needs attention. Reads only, except turning finding types on or off for the account. Use for fleet size, fleet health, findings, and "what should I look at today".
 ---
 
 # Pulpo fleet overview and health
@@ -48,4 +48,6 @@ Fixing what the overview finds (filling data, changing status, assigning a drive
 
 ## If the user asks you to fix something
 
-This skill only reads. When the user says "fix it", switch to the skill that owns the change and follow its write rules, which are always the same: ask first and show exactly what will change (record by plate or name, current value to new value), wait for a plain yes to that exact action, never invent ids or values, and remember that deletes, archives and money movements cannot be undone.
+This skill reads, with one exception below. When the user says "fix it", switch to the skill that owns the change; the connector's write rules apply as everywhere.
+
+The exception: which finding types count toward the health score is an account setting. `pulpo_update_fleet_health_enabled_findings` changes it for everyone in the account and patches only the types you send; read `pulpo_get_fleet_health_enabled_findings` first.

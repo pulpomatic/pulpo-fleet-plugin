@@ -28,12 +28,7 @@ All checklist and inspection ids, field ids and tag ids are UUID strings. Only `
 
 ## Before any write
 
-- **Ask first.** This connector runs a write as soon as you call it; the confirmation is yours (the host may ask too, and it can be set to auto-approve). Show what will change: the record as the user knows it (plate, name or Pulpo ID, never an internal id), and each field as current value to new value. Wait for a plain yes to that exact action. A yes to something else does not count; if the details change, ask again.
-- **Never invent IDs or values.** Take ids from tool results in this conversation. Turn names into catalog ids with `pulpo_resolve_catalog_id`. If a name does not match exactly, or several records fit, list the candidates by name and let the user choose; never pick the closest one or a default.
-- **Replace vs patch.** A tool that replaces a whole record drops whatever you leave out: read the record first, merge your change into it, send everything. A tool that patches takes only the fields that change.
-- **Irreversible means say so.** Deletes, archives, bulk changes and money movements cannot be undone from Pulpo or from here. Say it in the question, ask once per action, and prefer the reversible alternative when one exists (inactive status instead of delete, lock instead of withdraw).
-- **After the call**, report what the tool returned. If it failed, say in plain words what failed and do not retry with different values unless the user agrees.
-- **Not found is not "does not exist".** What you can see depends on the account selected, the user's role and their segments. An empty result or a 404 means "no match among what you can access in this account".
+The connector's write rules apply (it sends them with its instructions; summary in `getting-started`). What follows adds only this area's own rules.
 
 ## Writes
 

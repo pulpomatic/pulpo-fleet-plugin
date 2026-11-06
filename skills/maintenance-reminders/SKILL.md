@@ -7,13 +7,14 @@ description: Maintenance work orders, preventive maintenance plans and reminders
 
 ## Reading
 
-- **What is overdue or coming up:** `pulpo_list_reminders` with `status` (`expired`, `closeToExpire`, `pending`, `completed`); for maintenance `pulpo_list_maintenances` sorted by `scheduledDate` with a `filters` range on `scheduledDate` or `scheduledKm`. Say what "soon" meant (the window you used). Keep overdue, upcoming and done apart, and only where the returned fields support it.
+- **What is overdue or coming up:** `pulpo_list_reminders` with `status` (`expired`, `closeToExpire`, `pending`, `completed`); for maintenance `pulpo_list_maintenances` sorted by `scheduledDate` with a `filters` range on `scheduledDate` or `scheduledKm`. Reminders are not the only source: expiry dates Pulpo tracks on the records themselves (last section) can be overdue with no reminder, so check them too before saying nothing is due. Say what "soon" meant (the window you used). Keep overdue, upcoming and done apart, and only where the returned fields support it.
 - **One vehicle:** `pulpo_get_vehicle_upcoming_maintenances` (numeric `vehicleId`) for current and upcoming; `pulpo_list_maintenances` filtered by `vehicle` for history; `pulpo_list_reminders_by_entity` for its reminders.
 - **One maintenance:** the user usually says an identifier like `MNT-0045`: call `pulpo_list_maintenances` with `searchText` to find it, then `pulpo_get_maintenance_details` with its UUID.
 - **By person:** `pulpo_list_reminders_by_user`.
 - **Filters** (`filters`, serialized JSON): `{"AND":[{"parent":"m","<field>":{"<operator>":"<value>"}}]}`. Fields: `state` (status name), `type` (preventive or corrective), `vehicle`, `registrationNumber`, `economicNumber`, `responsible`, `supplier`, `startDate`, `endDate`, `scheduledDate`, `scheduledKm`, `total`, `reference`, `identifier`, `brand`, `model`, `createdAt`. Operators: `is`, `in`, `contains`, `range`, `gt`, `gte`, `lt`, `lte`, `empty`, `not`. `isCanvanView: true` groups results by status.
 - **Plans:** `pulpo_list_maintenance_plans`, `pulpo_get_maintenance_plan`, and `pulpo_get_plan_latest_update_job` for the progress of the background job after a plan is created or changed.
-- **Configuration:** `pulpo_list_maintenance_categories` (with task types), `pulpo_list_all_maintenance_categories` (including hidden), `pulpo_get_category_tasks`, `pulpo_list_maintenance_status_flows`, `pulpo_get_flow_maintenance_statuses`, `pulpo_get_maintenance_status_flow`, `pulpo_list_transitions_from_status`, `pulpo_list_transitions_to_status`.
+- **Configuration:** `pulpo_list_maintenance_categories` (with task types), `pulpo_list_all_maintenance_categories` (including hidden), `pulpo_get_category_tasks`, `pulpo_list_maintenance_status_flows`, `pulpo_get_flow_maintenance_statuses`, `pulpo_get_maintenance_status_flow`, `pulpo_list_transitions_from_status`, `pulpo_list_transitions_to_status`, and one status or transition in detail with `pulpo_get_maintenance_status` / `pulpo_get_maintenance_status_transition`; status groups (Open, In progress, Closed) with `pulpo_get_maintenance_status_categories`.
+- **Catalogs:** `pulpo_get_priorities` (High, Medium, Low), `pulpo_get_reminder_status` (Pending, Completed, Expired), `pulpo_get_notification_types` (email, push, SMS). `pulpo_export_reminders` returns a file, not data to answer from.
 
 ## Two kinds of ids, never mix them
 
@@ -24,12 +25,7 @@ description: Maintenance work orders, preventive maintenance plans and reminders
 
 ## Before any write
 
-- **Ask first.** This connector runs a write as soon as you call it; the confirmation is yours (the host may ask too, and it can be set to auto-approve). Show what will change: the record as the user knows it (plate, name or Pulpo ID, never an internal id), and each field as current value to new value. Wait for a plain yes to that exact action. A yes to something else does not count; if the details change, ask again.
-- **Never invent IDs or values.** Take ids from tool results in this conversation. Turn names into catalog ids with `pulpo_resolve_catalog_id`. If a name does not match exactly, or several records fit, list the candidates by name and let the user choose; never pick the closest one or a default.
-- **Replace vs patch.** A tool that replaces a whole record drops whatever you leave out: read the record first, merge your change into it, send everything. A tool that patches takes only the fields that change.
-- **Irreversible means say so.** Deletes, archives, bulk changes and money movements cannot be undone from Pulpo or from here. Say it in the question, ask once per action, and prefer the reversible alternative when one exists (inactive status instead of delete, lock instead of withdraw).
-- **After the call**, report what the tool returned. If it failed, say in plain words what failed and do not retry with different values unless the user agrees.
-- **Not found is not "does not exist".** What you can see depends on the account selected, the user's role and their segments. An empty result or a 404 means "no match among what you can access in this account".
+The connector's write rules apply (it sends them with its instructions; summary in `getting-started`). What follows adds only this area's own rules.
 
 ## Maintenance writes
 
@@ -40,7 +36,8 @@ description: Maintenance work orders, preventive maintenance plans and reminders
 - **Delete:** `pulpo_delete_maintenance` is permanent. Offer to cancel by status instead when that is what the user means.
 - **Vehicle status side effect:** `pulpo_can_update_vehicle_status` checks whether the vehicle's status can change from a maintenance. Use it before promising that sending a vehicle to the shop updates its status.
 - **Plans:** `pulpo_create_maintenance_plan` and `pulpo_update_maintenance_plan` (full replace: read the plan first) start a background job; say it is queued and offer `pulpo_get_plan_latest_update_job`. Plan status is `ACTIVE`, `DRAFT` or `DELETED`; plan type is `fixed` or `interval`. `pulpo_remove_vehicle_from_plan` also cancels that vehicle's future plan maintenances: say so. `pulpo_delete_maintenance_plan` is permanent.
-- **Categories, task types, statuses, flows, transitions:** configuration shared by the whole account. Treat any change as account-wide and say so. Deleting them (`pulpo_delete_maintenance_category`, `pulpo_delete_maintenance_task_type`, `pulpo_delete_maintenance_status`, `pulpo_delete_maintenance_status_flow`, `pulpo_delete_maintenance_status_transition`) is permanent; run `pulpo_can_delete_maintenance_status` before deleting a status.
+- **Categories, task types, statuses, flows, transitions:** configuration shared by the whole account. Treat any change as account-wide and say so. Create or change them with `pulpo_create_maintenance_status_flow` / `pulpo_update_maintenance_status_flow`, `pulpo_create_maintenance_status_transition` (one-way, source to destination, both in the same flow), `pulpo_create_maintenance_category` / `pulpo_update_maintenance_category`, `pulpo_create_maintenance_task_type` / `pulpo_update_maintenance_task_type` (inside an existing category). Deleting them (`pulpo_delete_maintenance_category`, `pulpo_delete_maintenance_task_type`, `pulpo_delete_maintenance_status`, `pulpo_delete_maintenance_status_flow`, `pulpo_delete_maintenance_status_transition`) is permanent; run `pulpo_can_delete_maintenance_status` before deleting a status.
+
 
 ## Reminders
 

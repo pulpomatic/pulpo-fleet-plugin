@@ -9,22 +9,26 @@ The Pulpo connector gives you the tools of Pulpo's fleet agent, named `pulpo_*`,
 
 ## 1. Choose the account first
 
-1. If any `pulpo_*` tool answers that an account must be selected, or the user has more than one account, call `pulpo_list_accounts`. It returns `selectedAccountId` and the accounts.
-2. With a single account Pulpo selects it automatically; say nothing about it.
-3. With several and none selected, ask the user which one, by name, then call `pulpo_select_account` with the `accountId` from that list. The choice is remembered for this user and client.
-4. Say which account a fleet-wide number comes from. Switching account changes every later answer: ask before switching.
+The connector's instructions cover this. In short: `pulpo_list_accounts` returns `selectedAccountId` and the accounts; with a single account it is selected automatically (say nothing about it); with several and none selected, ask the user which one by name and call `pulpo_select_account`. Say which account a fleet-wide number comes from, and ask before switching.
 
 ## 2. Pick the skill for the job
 
 | The user wants | Skill |
 | --- | --- |
-| Fleet size, health score, what needs attention | `fleet-overview` |
-| Find a vehicle, its status, insurance, contract, odometer; create or change vehicles | `vehicles` |
-| Work orders, maintenance plans, reminders and due dates | `maintenance-reminders` |
+| Fleet size, health score, missing data, what needs attention, which finding types are enabled | `fleet-overview` |
+| One vehicle: find it, its status, insurance policy, contract, odometer readings and change history; vehicle catalogs (types, brands, statuses); create, change, archive or delete vehicles | `vehicles` |
+| Work orders, maintenance plans, maintenance setup (status flows, categories, task types), and reminders: anything with a due date | `maintenance-reminders` |
 | Fuel loads, expenses, approvals, cost questions | `fuel-expenses` |
-| Drivers, licenses, who drives what, assignments | `drivers-assignments` |
-| PulpoPay balance, cards, movements, funding requests | `pulpopay` |
+| Drivers, their licenses and documents, who drives what, vehicle and card assignments | `drivers-assignments` |
+| PulpoPay (balances, cards, movements, funding requests) and the fleet's payment methods in general | `pulpopay` |
 | Inspection forms and recorded inspections | `inspections` |
+| Suppliers, segments, tags, custom fields, catalogs, traffic fines, how-to questions, support tickets | this skill, below |
+
+When two rows seem to fit:
+- One vehicle's own record goes to `vehicles`; the same question across the fleet goes to `fleet-overview`.
+- Something due or overdue (license, insurance, ITV, contract) has two sources, and a full answer checks both: the expiry date stored on the record itself (insurance, ITV and contract on vehicles in `vehicles`, licenses in `drivers-assignments`, fleet-wide expiries in `fleet-overview`), and any reminders created for it (`maintenance-reminders`). An expired policy may have no reminder at all.
+- A card's balance, movements or funding go to `pulpopay`; which vehicle or driver holds it, to `drivers-assignments`; the fuel bought with it, to `fuel-expenses`.
+- Lookups any skill may use: `pulpo_resolve_catalog_id`, `pulpo_list_catalog_items`, `pulpo_list_vehicles`, `pulpo_get_vehicle_details`, `pulpo_list_drivers`.
 
 Most questions are answered by reads alone. Start there.
 
@@ -40,17 +44,12 @@ Most questions are answered by reads alone. Start there.
 
 ## Before any write
 
-- **Ask first.** This connector runs a write as soon as you call it; the confirmation is yours (the host may ask too, and it can be set to auto-approve). Show what will change: the record as the user knows it (plate, name or Pulpo ID, never an internal id), and each field as current value to new value. Wait for a plain yes to that exact action. A yes to something else does not count; if the details change, ask again.
-- **Never invent IDs or values.** Take ids from tool results in this conversation. Turn names into catalog ids with `pulpo_resolve_catalog_id`. If a name does not match exactly, or several records fit, list the candidates by name and let the user choose; never pick the closest one or a default.
-- **Replace vs patch.** A tool that replaces a whole record drops whatever you leave out: read the record first, merge your change into it, send everything. A tool that patches takes only the fields that change.
-- **Irreversible means say so.** Deletes, archives, bulk changes and money movements cannot be undone from Pulpo or from here. Say it in the question, ask once per action, and prefer the reversible alternative when one exists (inactive status instead of delete, lock instead of withdraw).
-- **After the call**, report what the tool returned. If it failed, say in plain words what failed and do not retry with different values unless the user agrees.
-- **Not found is not "does not exist".** What you can see depends on the account selected, the user's role and their segments. An empty result or a 404 means "no match among what you can access in this account".
+The connector sends its write rules to every client with its instructions, whether or not this plugin is installed: ask first with each field's current and new value and wait for a plain yes, never invent ids (resolve names with `pulpo_resolve_catalog_id`), read before replacing a whole record, say when something cannot be undone, and report what the tool returned. Every skill relies on them and adds only its own area's rules. An empty result means no match among what this user can access, not that the record does not exist.
 
 ## Areas without their own skill
 
-- **Suppliers** (`pulpo_list_suppliers`, `pulpo_get_supplier_details`, `pulpo_get_suppliers_catalog` for id/name pairs, `pulpo_list_supplier_locations`): to create or edit use `pulpo_create_supplier` / `pulpo_update_supplier`. `pulpo_delete_supplier` is permanent and suppliers cannot be archived; say so before asking.
-- **Segments** (work centers, regions, departments): `pulpo_get_segment_structure` or `pulpo_get_segment_tree` for the full picture, `pulpo_list_segments` (needs a segment type id), `pulpo_get_segment_inheritance` for what one entity inherits. `pulpo_update_segment` needs `pulpo_get_segment_detail` first. `pulpo_update_segment_tree` replaces the entire tree: read `pulpo_get_segment_tree`, change it, send it all. To hide a segment use `pulpo_archive_segment` (reversible with `pulpo_unarchive_segment`) rather than `pulpo_delete_segment`.
+- **Suppliers** (`pulpo_list_suppliers`, `pulpo_get_supplier_details`, `pulpo_get_suppliers_catalog` for id/name pairs, `pulpo_list_supplier_locations`, `pulpo_get_supplier_child_catalog` for the locations of one parent supplier; `pulpo_export_suppliers` returns a file): to create or edit use `pulpo_create_supplier` / `pulpo_update_supplier`. `pulpo_delete_supplier` is permanent and suppliers cannot be archived; say so before asking.
+- **Segments** (work centers, regions, departments): `pulpo_get_segment_structure` or `pulpo_get_segment_tree` for the full picture, `pulpo_list_segments` (needs a segment type id), `pulpo_get_segment_inheritance` for what one entity inherits, `pulpo_get_segment_priority_inheritance` for which source wins when a vehicle, its driver and its card carry different segments, `pulpo_get_segment_tree_v2` for the tree with type metadata, `pulpo_get_segments_by_ids` to name a list of ids. `pulpo_create_segment` needs a name and a segment type id (optionally a parent). `pulpo_update_segment` needs `pulpo_get_segment_detail` first. `pulpo_update_segment_tree` replaces the entire tree: read `pulpo_get_segment_tree`, change it, send it all. To hide a segment use `pulpo_archive_segment` (reversible with `pulpo_unarchive_segment`) rather than `pulpo_delete_segment`.
 - **Tags**: `pulpo_list_tags` needs a module (`vehicles`, `users`, `expenses`, `fuels`, `maintenances`, `suppliers`, `payment-methods`); `pulpo_create_tag`; `pulpo_update_tag` after reading the current tag. Making a tag `INACTIVE` hides it from pickers but keeps it on records.
 - **Custom fields and status flows**: `pulpo_get_custom_fields`, `pulpo_get_custom_field_sections`, `pulpo_get_status_flow` (modules `maintenances` or `vehicles`). `pulpo_save_custom_fields` and `pulpo_update_status_flow` replace the whole configuration; read first, send the full result plus the change.
 - **Catalogs** (types, statuses, brands, fuel types): `pulpo_list_catalog_items` with a `className`, or `pulpo_resolve_catalog_id` for one name. Global items cannot be deleted or renamed, only hidden (`pulpo_update_catalog_item`). `pulpo_delete_catalog_item` is permanent.
