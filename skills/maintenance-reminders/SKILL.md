@@ -7,7 +7,7 @@ description: Maintenance work orders, preventive maintenance plans and reminders
 
 ## Reading
 
-- **What is overdue or coming up:** `pulpo_list_reminders` with `status` (`expired`, `closeToExpire`, `pending`, `completed`); for maintenance `pulpo_list_maintenances` sorted by `scheduledDate` with a `filters` range on `scheduledDate` or `scheduledKm`. Say what "soon" meant (the window you used). Keep overdue, upcoming and done apart, and only where the returned fields support it.
+- **What is overdue or coming up:** `pulpo_list_reminders` with `status` (`expired`, `closeToExpire`, `pending`, `completed`); for maintenance `pulpo_list_maintenances` sorted by `scheduledDate` with a `filters` range on `scheduledDate` or `scheduledKm`. Reminders are not the only source: expiry dates Pulpo tracks on the records themselves (last section) can be overdue with no reminder, so check them too before saying nothing is due. Say what "soon" meant (the window you used). Keep overdue, upcoming and done apart, and only where the returned fields support it.
 - **One vehicle:** `pulpo_get_vehicle_upcoming_maintenances` (numeric `vehicleId`) for current and upcoming; `pulpo_list_maintenances` filtered by `vehicle` for history; `pulpo_list_reminders_by_entity` for its reminders.
 - **One maintenance:** the user usually says an identifier like `MNT-0045`: call `pulpo_list_maintenances` with `searchText` to find it, then `pulpo_get_maintenance_details` with its UUID.
 - **By person:** `pulpo_list_reminders_by_user`.

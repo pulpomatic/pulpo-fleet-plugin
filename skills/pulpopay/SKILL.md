@@ -9,7 +9,7 @@ PulpoPay issues cards to drivers and moves money between the company account and
 
 ## Reading
 
-- **Is it on, and where is it:** `pulpo_get_pulpopay_status` (enabled or not), `pulpo_get_pulpopay_account_onboarding`, `pulpo_get_pulpopay_account_settings` (limits, allowed merchants). If PulpoPay is not enabled, say so and stop.
+- **Is it on, and where is it:** `pulpo_get_pulpopay_status` (enabled or not), `pulpo_get_pulpopay_account_onboarding`, `pulpo_get_pulpopay_account_settings` (limits, allowed merchants). If PulpoPay is not enabled, say so and stop for PulpoPay balances, cards and money; the fleet's payment methods in general (last section) work without PulpoPay.
 - **Money:** `pulpo_get_pulpopay_account_balances` (total, available, used, currency), `pulpo_get_pulpopay_account_statements` (paged), `pulpo_get_pulpopay_card_balance` (by payment method id).
 - **Cards:** `pulpo_get_pulpopay_customer_cards` (all cards: UUID card ids and masked numbers), `pulpo_get_pulpopay_driver_cards` (one driver's), `pulpo_get_pulpopay_physical_card`. Card ids come in two forms: the card UUID, and the numeric payment method id. Tools say which they take; do not swap them.
 - **Movements:** `pulpo_list_pulpopay_movements` (filters, search, paging; amount, date, merchant, type, status, card, driver, vehicle), `pulpo_get_pulpopay_card_movements` (card UUID), `pulpo_get_pulpopay_wallet_card_movements`, `pulpo_get_pulpopay_wallet_movements` (validated plus pending). Reference codes: `pulpo_get_pulpopay_movement_types`, `pulpo_get_pulpopay_merchant_categories`, `pulpo_get_pulpopay_fuels_costs`.

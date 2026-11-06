@@ -26,7 +26,7 @@ The connector's instructions cover this. In short: `pulpo_list_accounts` returns
 
 When two rows seem to fit:
 - One vehicle's own record goes to `vehicles`; the same question across the fleet goes to `fleet-overview`.
-- When something is due or overdue (license, insurance, ITV, contract renewal), it is a reminder: `maintenance-reminders`. The stored record itself (the policy, the license) belongs to its owner's skill.
+- Something due or overdue (license, insurance, ITV, contract) has two sources, and a full answer checks both: the expiry date stored on the record itself (insurance, ITV and contract on vehicles in `vehicles`, licenses in `drivers-assignments`, fleet-wide expiries in `fleet-overview`), and any reminders created for it (`maintenance-reminders`). An expired policy may have no reminder at all.
 - A card's balance, movements or funding go to `pulpopay`; which vehicle or driver holds it, to `drivers-assignments`; the fuel bought with it, to `fuel-expenses`.
 - Lookups any skill may use: `pulpo_resolve_catalog_id`, `pulpo_list_catalog_items`, `pulpo_list_vehicles`, `pulpo_get_vehicle_details`, `pulpo_list_drivers`.
 
