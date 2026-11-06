@@ -16,7 +16,7 @@ PulpoPay issues cards to drivers and moves money between the company account and
 - **Fuel load checks:** `pulpo_list_pulpopay_fuel_load_checks`, `pulpo_get_pulpopay_fuel_load_check` (by UUID), `pulpo_get_pulpopay_fuel_loads_score` (0 to 100 compliance score with total, passed and failed).
 - **Controls:** `pulpo_get_pulpopay_controls_settings` (spending restrictions and merchant category limits).
 - **Funding requests:** `pulpo_get_fund_card_requests_count` (counts by status), `pulpo_list_fund_card_requests`, `pulpo_list_fund_card_request_details`. List oldest pending first when the user wants to work the queue. Status codes are numeric: read the labels from `pulpo_list_catalog_items` with `className: "fund-card-requests-statuses"`; never guess which code means approved.
-- **Scheduled funding:** `pulpo_list_scheduled_fund_cards`, `pulpo_get_scheduled_fund_card`, `pulpo_validate_scheduled_fund_card`. Catalogs `scheduled-fund-cards-frequencies`, `-operation-types`, `-statuses` via `pulpo_list_catalog_items`.
+- **Scheduled funding:** `pulpo_list_scheduled_fund_cards`, `pulpo_get_scheduled_fund_card`; `pulpo_disable_scheduled_fund_card` stops one. Catalogs `scheduled-fund-cards-frequencies`, `-operation-types`, `-statuses` via `pulpo_list_catalog_items`. Creating or validating a scheduled funding needs a file upload, which this connector does not take: send the user to Pulpo for that, and never improvise it with other money tools.
 - **Payment methods** (the fleet's cards in general, not only PulpoPay): `pulpo_list_payment_methods`, `pulpo_get_payment_method_details`, `pulpo_get_payment_methods_catalog`. Archived ones are hidden unless `q` has `archived:{is:true}`.
 - Documents and invoices: `pulpo_get_pulpopay_document`, `pulpo_get_pulpopay_recovered_invoices`. Do not print Base64 content.
 
@@ -33,7 +33,7 @@ When you summarize money, give currency, the date range, and whether pending mov
 
 ## Money and card writes: stricter than the general rules
 
-These move money or change card access: `pulpo_pulpopay_fund_account`, `pulpo_pulpopay_transfer_funds`, `pulpo_pulpopay_fund_cards`, `pulpo_pulpopay_withdrawal_cards`, `pulpo_confirm_fund_card_request`, `pulpo_update_fund_card_request`, `pulpo_create_scheduled_fund_card`, `pulpo_disable_scheduled_fund_card`, `pulpo_pulpopay_lock_unlock_card`, `pulpo_pulpopay_change_card_nip`, `pulpo_pulpopay_reassign_card`, `pulpo_update_pulpopay_controls_settings`.
+These move money or change card access: `pulpo_pulpopay_fund_account`, `pulpo_pulpopay_transfer_funds`, `pulpo_pulpopay_fund_cards`, `pulpo_pulpopay_withdrawal_cards`, `pulpo_confirm_fund_card_request`, `pulpo_update_fund_card_request`, `pulpo_disable_scheduled_fund_card`, `pulpo_pulpopay_lock_unlock_card`, `pulpo_pulpopay_change_card_nip`, `pulpo_pulpopay_reassign_card`, `pulpo_update_pulpopay_controls_settings`.
 
 1. **The user states the amount and the cards.** Never choose an amount, a card, or a number of cards on your own, never round, and never fill a gap with a default. Read the amount back exactly, with currency.
 2. **Check before you move.** `pulpo_pulpopay_card_funding_healthcheck` (payment method id and amount) validates balance and card status before funding. Read `pulpo_get_pulpopay_account_balances` and, for a transfer, the origin card's balance. If the check fails, report why and stop.
