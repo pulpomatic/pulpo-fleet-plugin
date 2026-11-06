@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "pulpo-fleet",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Work with your Pulpo fleet from ChatGPT, Codex and Claude: vehicles, drivers, fuel, expenses, maintenance, reminders, inspections and PulpoPay, with your own Pulpo permissions. Every change is confirmed with you first.",
   "author": {
     "name": "Pulpo",
@@ -116,7 +116,7 @@
       },
       "publication": {
         "countries": [],
-        "release_notes": "1.0.0: read and write access to Pulpo fleet, driver, cost, maintenance, inspection and PulpoPay data with confirmation rules, via Pulpo's fleet agent tools."
+        "release_notes": "1.0.1: the PulpoPay skill no longer names the two scheduled-funding tools the server does not expose (create/validate need a file upload; done in Pulpo). 1.0.0: read and write access to Pulpo fleet, driver, cost, maintenance, inspection and PulpoPay data with confirmation rules, via Pulpo's fleet agent tools."
       }
     }
   }
