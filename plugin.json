@@ -116,7 +116,7 @@
       },
       "publication": {
         "countries": [],
-        "release_notes": "1.1.0: one owner skill per tool for all 259 tools (tools.json, checked in CI); the write and account rules now come from the server's instructions instead of a copy in every skill; the routing table covers every area and says how to choose when two fit."
+        "release_notes": "1.1.0: one owner skill per tool for all 260 tools (tools.json, checked in CI); the write and account rules now come from the server's instructions instead of a copy in every skill; the routing table covers every area and says how to choose when two fit."
       }
     }
   }
