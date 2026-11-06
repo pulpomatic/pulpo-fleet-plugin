@@ -1,0 +1,1301 @@
+{
+  "source": "pulpomatic/PULPO-FLEET-AGENT src/mcp/tool-annotations.ts @ 5fcf472d7 (+ pulpo_list_accounts, pulpo_select_account)",
+  "note": "One owner skill per tool. Other skills may name a tool too; the owner is where its rules live. Checked by scripts/check-catalog.mjs.",
+  "tools": [
+    {
+      "name": "pulpo_archive_payment_methods",
+      "kind": "destructive",
+      "owner": "pulpopay"
+    },
+    {
+      "name": "pulpo_archive_segment",
+      "kind": "destructive",
+      "owner": "getting-started"
+    },
+    {
+      "name": "pulpo_archive_vehicles",
+      "kind": "destructive",
+      "owner": "vehicles"
+    },
+    {
+      "name": "pulpo_bulk_end_assignments",
+      "kind": "destructive",
+      "owner": "drivers-assignments"
+    },
+    {
+      "name": "pulpo_bulk_update_vehicle_status",
+      "kind": "destructive",
+      "owner": "vehicles"
+    },
+    {
+      "name": "pulpo_can_delete_maintenance_status",
+      "kind": "read",
+      "owner": "maintenance-reminders"
+    },
+    {
+      "name": "pulpo_can_update_vehicle_status",
+      "kind": "read",
+      "owner": "maintenance-reminders"
+    },
+    {
+      "name": "pulpo_complete_reminder",
+      "kind": "write",
+      "owner": "maintenance-reminders"
+    },
+    {
+      "name": "pulpo_confirm_fund_card_request",
+      "kind": "destructive",
+      "owner": "pulpopay"
+    },
+    {
+      "name": "pulpo_create_assignment",
+      "kind": "write",
+      "owner": "drivers-assignments"
+    },
+    {
+      "name": "pulpo_create_catalog_item",
+      "kind": "write",
+      "owner": "vehicles"
+    },
+    {
+      "name": "pulpo_create_checklist",
+      "kind": "write",
+      "owner": "inspections"
+    },
+    {
+      "name": "pulpo_create_checklist_answer",
+      "kind": "write",
+      "owner": "inspections"
+    },
+    {
+      "name": "pulpo_create_document_folder",
+      "kind": "write",
+      "owner": "drivers-assignments"
+    },
+    {
+      "name": "pulpo_create_driver",
+      "kind": "write",
+      "owner": "drivers-assignments"
+    },
+    {
+      "name": "pulpo_create_expense",
+      "kind": "write",
+      "owner": "fuel-expenses"
+    },
+    {
+      "name": "pulpo_create_fuel",
+      "kind": "write",
+      "owner": "fuel-expenses"
+    },
+    {
+      "name": "pulpo_create_maintenance",
+      "kind": "write",
+      "owner": "maintenance-reminders"
+    },
+    {
+      "name": "pulpo_create_maintenance_category",
+      "kind": "write",
+      "owner": "maintenance-reminders"
+    },
+    {
+      "name": "pulpo_create_maintenance_plan",
+      "kind": "write",
+      "owner": "maintenance-reminders"
+    },
+    {
+      "name": "pulpo_create_maintenance_status",
+      "kind": "write",
+      "owner": "maintenance-reminders"
+    },
+    {
+      "name": "pulpo_create_maintenance_status_flow",
+      "kind": "write",
+      "owner": "maintenance-reminders"
+    },
+    {
+      "name": "pulpo_create_maintenance_status_transition",
+      "kind": "write",
+      "owner": "maintenance-reminders"
+    },
+    {
+      "name": "pulpo_create_maintenance_task",
+      "kind": "write",
+      "owner": "maintenance-reminders"
+    },
+    {
+      "name": "pulpo_create_maintenance_task_type",
+      "kind": "write",
+      "owner": "maintenance-reminders"
+    },
+    {
+      "name": "pulpo_create_odometer",
+      "kind": "write",
+      "owner": "vehicles"
+    },
+    {
+      "name": "pulpo_create_payment_method",
+      "kind": "write",
+      "owner": "pulpopay"
+    },
+    {
+      "name": "pulpo_create_payment_method_assignment",
+      "kind": "write",
+      "owner": "drivers-assignments"
+    },
+    {
+      "name": "pulpo_create_reminder",
+      "kind": "write",
+      "owner": "maintenance-reminders"
+    },
+    {
+      "name": "pulpo_create_reminders_massive",
+      "kind": "destructive",
+      "owner": "maintenance-reminders"
+    },
+    {
+      "name": "pulpo_create_segment",
+      "kind": "write",
+      "owner": "getting-started"
+    },
+    {
+      "name": "pulpo_create_supplier",
+      "kind": "write",
+      "owner": "getting-started"
+    },
+    {
+      "name": "pulpo_create_support_ticket",
+      "kind": "write",
+      "owner": "getting-started"
+    },
+    {
+      "name": "pulpo_create_tag",
+      "kind": "write",
+      "owner": "getting-started"
+    },
+    {
+      "name": "pulpo_create_user_assignment",
+      "kind": "write",
+      "owner": "drivers-assignments"
+    },
+    {
+      "name": "pulpo_create_vehicle",
+      "kind": "write",
+      "owner": "vehicles"
+    },
+    {
+      "name": "pulpo_create_vehicle_insurance",
+      "kind": "write",
+      "owner": "vehicles"
+    },
+    {
+      "name": "pulpo_delete_assignment",
+      "kind": "destructive",
+      "owner": "drivers-assignments"
+    },
+    {
+      "name": "pulpo_delete_catalog_item",
+      "kind": "destructive",
+      "owner": "getting-started"
+    },
+    {
+      "name": "pulpo_delete_checklist",
+      "kind": "destructive",
+      "owner": "inspections"
+    },
+    {
+      "name": "pulpo_delete_checklist_answer",
+      "kind": "destructive",
+      "owner": "inspections"
+    },
+    {
+      "name": "pulpo_delete_document",
+      "kind": "destructive",
+      "owner": "drivers-assignments"
+    },
+    {
+      "name": "pulpo_delete_document_archive",
+      "kind": "destructive",
+      "owner": "drivers-assignments"
+    },
+    {
+      "name": "pulpo_delete_document_folder",
+      "kind": "destructive",
+      "owner": "drivers-assignments"
+    },
+    {
+      "name": "pulpo_delete_document_objects",
+      "kind": "destructive",
+      "owner": "drivers-assignments"
+    },
+    {
+      "name": "pulpo_delete_driver",
+      "kind": "destructive",
+      "owner": "drivers-assignments"
+    },
+    {
+      "name": "pulpo_delete_expense",
+      "kind": "destructive",
+      "owner": "fuel-expenses"
+    },
+    {
+      "name": "pulpo_delete_expenses",
+      "kind": "destructive",
+      "owner": "fuel-expenses"
+    },
+    {
+      "name": "pulpo_delete_fuel",
+      "kind": "destructive",
+      "owner": "fuel-expenses"
+    },
+    {
+      "name": "pulpo_delete_maintenance",
+      "kind": "destructive",
+      "owner": "maintenance-reminders"
+    },
+    {
+      "name": "pulpo_delete_maintenance_category",
+      "kind": "destructive",
+      "owner": "maintenance-reminders"
+    },
+    {
+      "name": "pulpo_delete_maintenance_plan",
+      "kind": "destructive",
+      "owner": "maintenance-reminders"
+    },
+    {
+      "name": "pulpo_delete_maintenance_status",
+      "kind": "destructive",
+      "owner": "maintenance-reminders"
+    },
+    {
+      "name": "pulpo_delete_maintenance_status_flow",
+      "kind": "destructive",
+      "owner": "maintenance-reminders"
+    },
+    {
+      "name": "pulpo_delete_maintenance_status_transition",
+      "kind": "destructive",
+      "owner": "maintenance-reminders"
+    },
+    {
+      "name": "pulpo_delete_maintenance_task",
+      "kind": "destructive",
+      "owner": "maintenance-reminders"
+    },
+    {
+      "name": "pulpo_delete_maintenance_task_type",
+      "kind": "destructive",
+      "owner": "maintenance-reminders"
+    },
+    {
+      "name": "pulpo_delete_payment_method",
+      "kind": "destructive",
+      "owner": "pulpopay"
+    },
+    {
+      "name": "pulpo_delete_reminders",
+      "kind": "destructive",
+      "owner": "maintenance-reminders"
+    },
+    {
+      "name": "pulpo_delete_reminders_by_entity",
+      "kind": "destructive",
+      "owner": "maintenance-reminders"
+    },
+    {
+      "name": "pulpo_delete_segment",
+      "kind": "destructive",
+      "owner": "getting-started"
+    },
+    {
+      "name": "pulpo_delete_supplier",
+      "kind": "destructive",
+      "owner": "getting-started"
+    },
+    {
+      "name": "pulpo_delete_vehicle",
+      "kind": "destructive",
+      "owner": "vehicles"
+    },
+    {
+      "name": "pulpo_delete_vehicle_insurance",
+      "kind": "destructive",
+      "owner": "vehicles"
+    },
+    {
+      "name": "pulpo_delete_vehicles_multiple",
+      "kind": "destructive",
+      "owner": "vehicles"
+    },
+    {
+      "name": "pulpo_disable_scheduled_fund_card",
+      "kind": "destructive",
+      "owner": "pulpopay"
+    },
+    {
+      "name": "pulpo_export_drivers",
+      "kind": "read",
+      "owner": "getting-started"
+    },
+    {
+      "name": "pulpo_export_payment_methods",
+      "kind": "read",
+      "owner": "pulpopay"
+    },
+    {
+      "name": "pulpo_export_reminders",
+      "kind": "read",
+      "owner": "maintenance-reminders"
+    },
+    {
+      "name": "pulpo_export_suppliers",
+      "kind": "read",
+      "owner": "getting-started"
+    },
+    {
+      "name": "pulpo_export_vehicle_change_history",
+      "kind": "read",
+      "owner": "vehicles"
+    },
+    {
+      "name": "pulpo_export_vehicles",
+      "kind": "read",
+      "owner": "getting-started"
+    },
+    {
+      "name": "pulpo_extend_vehicle_user_assignment",
+      "kind": "write",
+      "owner": "drivers-assignments"
+    },
+    {
+      "name": "pulpo_get_assignments_autocomplete",
+      "kind": "read",
+      "owner": "drivers-assignments"
+    },
+    {
+      "name": "pulpo_get_category_tasks",
+      "kind": "read",
+      "owner": "maintenance-reminders"
+    },
+    {
+      "name": "pulpo_get_checklist_answer_details",
+      "kind": "read",
+      "owner": "inspections"
+    },
+    {
+      "name": "pulpo_get_checklist_details",
+      "kind": "read",
+      "owner": "inspections"
+    },
+    {
+      "name": "pulpo_get_custom_field_sections",
+      "kind": "read",
+      "owner": "getting-started"
+    },
+    {
+      "name": "pulpo_get_custom_fields",
+      "kind": "read",
+      "owner": "getting-started"
+    },
+    {
+      "name": "pulpo_get_document_details",
+      "kind": "read",
+      "owner": "drivers-assignments"
+    },
+    {
+      "name": "pulpo_get_driver_details",
+      "kind": "read",
+      "owner": "drivers-assignments"
+    },
+    {
+      "name": "pulpo_get_expense_details",
+      "kind": "read",
+      "owner": "fuel-expenses"
+    },
+    {
+      "name": "pulpo_get_fleet_basic_data_pending",
+      "kind": "read",
+      "owner": "fleet-overview"
+    },
+    {
+      "name": "pulpo_get_fleet_health_enabled_findings",
+      "kind": "read",
+      "owner": "fleet-overview"
+    },
+    {
+      "name": "pulpo_get_fleet_score",
+      "kind": "read",
+      "owner": "fleet-overview"
+    },
+    {
+      "name": "pulpo_get_flow_maintenance_statuses",
+      "kind": "read",
+      "owner": "maintenance-reminders"
+    },
+    {
+      "name": "pulpo_get_fuel_details",
+      "kind": "read",
+      "owner": "fuel-expenses"
+    },
+    {
+      "name": "pulpo_get_fuels_by_payment_method",
+      "kind": "read",
+      "owner": "fuel-expenses"
+    },
+    {
+      "name": "pulpo_get_fuels_by_vehicle",
+      "kind": "read",
+      "owner": "fuel-expenses"
+    },
+    {
+      "name": "pulpo_get_fund_card_requests_count",
+      "kind": "read",
+      "owner": "pulpopay"
+    },
+    {
+      "name": "pulpo_get_knowledge_base_page",
+      "kind": "read",
+      "owner": "getting-started"
+    },
+    {
+      "name": "pulpo_get_maintenance_details",
+      "kind": "read",
+      "owner": "maintenance-reminders"
+    },
+    {
+      "name": "pulpo_get_maintenance_plan",
+      "kind": "read",
+      "owner": "maintenance-reminders"
+    },
+    {
+      "name": "pulpo_get_maintenance_status",
+      "kind": "read",
+      "owner": "maintenance-reminders"
+    },
+    {
+      "name": "pulpo_get_maintenance_status_categories",
+      "kind": "read",
+      "owner": "maintenance-reminders"
+    },
+    {
+      "name": "pulpo_get_maintenance_status_flow",
+      "kind": "read",
+      "owner": "maintenance-reminders"
+    },
+    {
+      "name": "pulpo_get_maintenance_status_transition",
+      "kind": "read",
+      "owner": "maintenance-reminders"
+    },
+    {
+      "name": "pulpo_get_notification_types",
+      "kind": "read",
+      "owner": "maintenance-reminders"
+    },
+    {
+      "name": "pulpo_get_odometer",
+      "kind": "read",
+      "owner": "vehicles"
+    },
+    {
+      "name": "pulpo_get_odometer_transaction",
+      "kind": "read",
+      "owner": "vehicles"
+    },
+    {
+      "name": "pulpo_get_odometers_history",
+      "kind": "read",
+      "owner": "vehicles"
+    },
+    {
+      "name": "pulpo_get_odometers_latest",
+      "kind": "read",
+      "owner": "vehicles"
+    },
+    {
+      "name": "pulpo_get_payment_method_assignments",
+      "kind": "read",
+      "owner": "drivers-assignments"
+    },
+    {
+      "name": "pulpo_get_payment_method_details",
+      "kind": "read",
+      "owner": "pulpopay"
+    },
+    {
+      "name": "pulpo_get_payment_methods_catalog",
+      "kind": "read",
+      "owner": "pulpopay"
+    },
+    {
+      "name": "pulpo_get_plan_latest_update_job",
+      "kind": "read",
+      "owner": "maintenance-reminders"
+    },
+    {
+      "name": "pulpo_get_priorities",
+      "kind": "read",
+      "owner": "maintenance-reminders"
+    },
+    {
+      "name": "pulpo_get_pulpopay_account_balances",
+      "kind": "read",
+      "owner": "pulpopay"
+    },
+    {
+      "name": "pulpo_get_pulpopay_account_onboarding",
+      "kind": "read",
+      "owner": "pulpopay"
+    },
+    {
+      "name": "pulpo_get_pulpopay_account_settings",
+      "kind": "read",
+      "owner": "pulpopay"
+    },
+    {
+      "name": "pulpo_get_pulpopay_account_statements",
+      "kind": "read",
+      "owner": "pulpopay"
+    },
+    {
+      "name": "pulpo_get_pulpopay_card_balance",
+      "kind": "read",
+      "owner": "pulpopay"
+    },
+    {
+      "name": "pulpo_get_pulpopay_card_movements",
+      "kind": "read",
+      "owner": "pulpopay"
+    },
+    {
+      "name": "pulpo_get_pulpopay_controls_settings",
+      "kind": "read",
+      "owner": "pulpopay"
+    },
+    {
+      "name": "pulpo_get_pulpopay_customer_cards",
+      "kind": "read",
+      "owner": "pulpopay"
+    },
+    {
+      "name": "pulpo_get_pulpopay_document",
+      "kind": "read",
+      "owner": "pulpopay"
+    },
+    {
+      "name": "pulpo_get_pulpopay_driver_cards",
+      "kind": "read",
+      "owner": "pulpopay"
+    },
+    {
+      "name": "pulpo_get_pulpopay_fuel_load_check",
+      "kind": "read",
+      "owner": "pulpopay"
+    },
+    {
+      "name": "pulpo_get_pulpopay_fuel_loads_score",
+      "kind": "read",
+      "owner": "pulpopay"
+    },
+    {
+      "name": "pulpo_get_pulpopay_fuels_costs",
+      "kind": "read",
+      "owner": "pulpopay"
+    },
+    {
+      "name": "pulpo_get_pulpopay_merchant_categories",
+      "kind": "read",
+      "owner": "pulpopay"
+    },
+    {
+      "name": "pulpo_get_pulpopay_movement_types",
+      "kind": "read",
+      "owner": "pulpopay"
+    },
+    {
+      "name": "pulpo_get_pulpopay_physical_card",
+      "kind": "read",
+      "owner": "pulpopay"
+    },
+    {
+      "name": "pulpo_get_pulpopay_recovered_invoices",
+      "kind": "read",
+      "owner": "pulpopay"
+    },
+    {
+      "name": "pulpo_get_pulpopay_status",
+      "kind": "read",
+      "owner": "pulpopay"
+    },
+    {
+      "name": "pulpo_get_pulpopay_wallet_card_movements",
+      "kind": "read",
+      "owner": "pulpopay"
+    },
+    {
+      "name": "pulpo_get_pulpopay_wallet_movements",
+      "kind": "read",
+      "owner": "pulpopay"
+    },
+    {
+      "name": "pulpo_get_reminder_details",
+      "kind": "read",
+      "owner": "maintenance-reminders"
+    },
+    {
+      "name": "pulpo_get_reminder_status",
+      "kind": "read",
+      "owner": "maintenance-reminders"
+    },
+    {
+      "name": "pulpo_get_scheduled_fund_card",
+      "kind": "read",
+      "owner": "pulpopay"
+    },
+    {
+      "name": "pulpo_get_segment_detail",
+      "kind": "read",
+      "owner": "getting-started"
+    },
+    {
+      "name": "pulpo_get_segment_inheritance",
+      "kind": "read",
+      "owner": "getting-started"
+    },
+    {
+      "name": "pulpo_get_segment_priority_inheritance",
+      "kind": "read",
+      "owner": "getting-started"
+    },
+    {
+      "name": "pulpo_get_segment_structure",
+      "kind": "read",
+      "owner": "getting-started"
+    },
+    {
+      "name": "pulpo_get_segment_tree",
+      "kind": "read",
+      "owner": "getting-started"
+    },
+    {
+      "name": "pulpo_get_segment_tree_v2",
+      "kind": "read",
+      "owner": "getting-started"
+    },
+    {
+      "name": "pulpo_get_segments_by_ids",
+      "kind": "read",
+      "owner": "getting-started"
+    },
+    {
+      "name": "pulpo_get_status_flow",
+      "kind": "read",
+      "owner": "getting-started"
+    },
+    {
+      "name": "pulpo_get_supplier_child_catalog",
+      "kind": "read",
+      "owner": "getting-started"
+    },
+    {
+      "name": "pulpo_get_supplier_details",
+      "kind": "read",
+      "owner": "getting-started"
+    },
+    {
+      "name": "pulpo_get_suppliers_catalog",
+      "kind": "read",
+      "owner": "getting-started"
+    },
+    {
+      "name": "pulpo_get_user_assignments",
+      "kind": "read",
+      "owner": "drivers-assignments"
+    },
+    {
+      "name": "pulpo_get_user_by_email",
+      "kind": "read",
+      "owner": "drivers-assignments"
+    },
+    {
+      "name": "pulpo_get_user_statuses",
+      "kind": "read",
+      "owner": "drivers-assignments"
+    },
+    {
+      "name": "pulpo_get_user_types",
+      "kind": "read",
+      "owner": "drivers-assignments"
+    },
+    {
+      "name": "pulpo_get_users_catalog",
+      "kind": "read",
+      "owner": "drivers-assignments"
+    },
+    {
+      "name": "pulpo_get_vehicle_alerts",
+      "kind": "read",
+      "owner": "vehicles"
+    },
+    {
+      "name": "pulpo_get_vehicle_assignments",
+      "kind": "read",
+      "owner": "drivers-assignments"
+    },
+    {
+      "name": "pulpo_get_vehicle_catalog_items",
+      "kind": "read",
+      "owner": "vehicles"
+    },
+    {
+      "name": "pulpo_get_vehicle_change_history",
+      "kind": "read",
+      "owner": "vehicles"
+    },
+    {
+      "name": "pulpo_get_vehicle_details",
+      "kind": "read",
+      "owner": "vehicles"
+    },
+    {
+      "name": "pulpo_get_vehicle_fleet_health",
+      "kind": "read",
+      "owner": "fleet-overview"
+    },
+    {
+      "name": "pulpo_get_vehicle_insurance_detail",
+      "kind": "read",
+      "owner": "vehicles"
+    },
+    {
+      "name": "pulpo_get_vehicle_latest_assignment",
+      "kind": "read",
+      "owner": "drivers-assignments"
+    },
+    {
+      "name": "pulpo_get_vehicle_properties_catalog",
+      "kind": "read",
+      "owner": "vehicles"
+    },
+    {
+      "name": "pulpo_get_vehicle_score",
+      "kind": "read",
+      "owner": "vehicles"
+    },
+    {
+      "name": "pulpo_get_vehicle_status_history",
+      "kind": "read",
+      "owner": "vehicles"
+    },
+    {
+      "name": "pulpo_get_vehicle_statuses_catalog",
+      "kind": "read",
+      "owner": "vehicles"
+    },
+    {
+      "name": "pulpo_get_vehicle_upcoming_maintenances",
+      "kind": "read",
+      "owner": "maintenance-reminders"
+    },
+    {
+      "name": "pulpo_get_vehicle_user_assignment",
+      "kind": "read",
+      "owner": "drivers-assignments"
+    },
+    {
+      "name": "pulpo_get_vehicles_brands",
+      "kind": "read",
+      "owner": "vehicles"
+    },
+    {
+      "name": "pulpo_get_vehicles_catalog",
+      "kind": "read",
+      "owner": "vehicles"
+    },
+    {
+      "name": "pulpo_get_vehicles_count",
+      "kind": "read",
+      "owner": "fleet-overview"
+    },
+    {
+      "name": "pulpo_get_vehicles_registration_numbers",
+      "kind": "read",
+      "owner": "vehicles"
+    },
+    {
+      "name": "pulpo_get_vehicles_types",
+      "kind": "read",
+      "owner": "vehicles"
+    },
+    {
+      "name": "pulpo_list_accounts",
+      "kind": "account",
+      "owner": "getting-started"
+    },
+    {
+      "name": "pulpo_list_all_maintenance_categories",
+      "kind": "read",
+      "owner": "maintenance-reminders"
+    },
+    {
+      "name": "pulpo_list_assignments",
+      "kind": "read",
+      "owner": "drivers-assignments"
+    },
+    {
+      "name": "pulpo_list_catalog_items",
+      "kind": "read",
+      "owner": "getting-started"
+    },
+    {
+      "name": "pulpo_list_checklist_answers",
+      "kind": "read",
+      "owner": "inspections"
+    },
+    {
+      "name": "pulpo_list_checklists",
+      "kind": "read",
+      "owner": "inspections"
+    },
+    {
+      "name": "pulpo_list_document_archives",
+      "kind": "read",
+      "owner": "drivers-assignments"
+    },
+    {
+      "name": "pulpo_list_documents",
+      "kind": "read",
+      "owner": "drivers-assignments"
+    },
+    {
+      "name": "pulpo_list_drivers",
+      "kind": "read",
+      "owner": "drivers-assignments"
+    },
+    {
+      "name": "pulpo_list_expenses",
+      "kind": "read",
+      "owner": "fuel-expenses"
+    },
+    {
+      "name": "pulpo_list_fuels",
+      "kind": "read",
+      "owner": "fuel-expenses"
+    },
+    {
+      "name": "pulpo_list_fund_card_request_details",
+      "kind": "read",
+      "owner": "pulpopay"
+    },
+    {
+      "name": "pulpo_list_fund_card_requests",
+      "kind": "read",
+      "owner": "pulpopay"
+    },
+    {
+      "name": "pulpo_list_maintenance_categories",
+      "kind": "read",
+      "owner": "maintenance-reminders"
+    },
+    {
+      "name": "pulpo_list_maintenance_plans",
+      "kind": "read",
+      "owner": "maintenance-reminders"
+    },
+    {
+      "name": "pulpo_list_maintenance_status_flows",
+      "kind": "read",
+      "owner": "maintenance-reminders"
+    },
+    {
+      "name": "pulpo_list_maintenances",
+      "kind": "read",
+      "owner": "maintenance-reminders"
+    },
+    {
+      "name": "pulpo_list_odometers",
+      "kind": "read",
+      "owner": "vehicles"
+    },
+    {
+      "name": "pulpo_list_payment_methods",
+      "kind": "read",
+      "owner": "pulpopay"
+    },
+    {
+      "name": "pulpo_list_pulpopay_fuel_load_checks",
+      "kind": "read",
+      "owner": "pulpopay"
+    },
+    {
+      "name": "pulpo_list_pulpopay_movements",
+      "kind": "read",
+      "owner": "pulpopay"
+    },
+    {
+      "name": "pulpo_list_reminders",
+      "kind": "read",
+      "owner": "maintenance-reminders"
+    },
+    {
+      "name": "pulpo_list_reminders_by_entity",
+      "kind": "read",
+      "owner": "maintenance-reminders"
+    },
+    {
+      "name": "pulpo_list_reminders_by_user",
+      "kind": "read",
+      "owner": "maintenance-reminders"
+    },
+    {
+      "name": "pulpo_list_scheduled_fund_cards",
+      "kind": "read",
+      "owner": "pulpopay"
+    },
+    {
+      "name": "pulpo_list_segments",
+      "kind": "read",
+      "owner": "getting-started"
+    },
+    {
+      "name": "pulpo_list_supplier_locations",
+      "kind": "read",
+      "owner": "getting-started"
+    },
+    {
+      "name": "pulpo_list_suppliers",
+      "kind": "read",
+      "owner": "getting-started"
+    },
+    {
+      "name": "pulpo_list_tags",
+      "kind": "read",
+      "owner": "getting-started"
+    },
+    {
+      "name": "pulpo_list_traffic_fine_plates",
+      "kind": "read",
+      "owner": "getting-started"
+    },
+    {
+      "name": "pulpo_list_traffic_fine_portals",
+      "kind": "read",
+      "owner": "getting-started"
+    },
+    {
+      "name": "pulpo_list_transitions_from_status",
+      "kind": "read",
+      "owner": "maintenance-reminders"
+    },
+    {
+      "name": "pulpo_list_transitions_to_status",
+      "kind": "read",
+      "owner": "maintenance-reminders"
+    },
+    {
+      "name": "pulpo_list_user_fleets",
+      "kind": "read",
+      "owner": "drivers-assignments"
+    },
+    {
+      "name": "pulpo_list_vehicle_insurance",
+      "kind": "read",
+      "owner": "vehicles"
+    },
+    {
+      "name": "pulpo_list_vehicles",
+      "kind": "read",
+      "owner": "vehicles"
+    },
+    {
+      "name": "pulpo_move_document_objects",
+      "kind": "write",
+      "owner": "drivers-assignments"
+    },
+    {
+      "name": "pulpo_pulpopay_activate_cards",
+      "kind": "destructive",
+      "owner": "pulpopay"
+    },
+    {
+      "name": "pulpo_pulpopay_card_funding_healthcheck",
+      "kind": "read",
+      "owner": "pulpopay"
+    },
+    {
+      "name": "pulpo_pulpopay_change_card_nip",
+      "kind": "destructive",
+      "owner": "pulpopay"
+    },
+    {
+      "name": "pulpo_pulpopay_create_card",
+      "kind": "destructive",
+      "owner": "pulpopay"
+    },
+    {
+      "name": "pulpo_pulpopay_create_pomelo_client",
+      "kind": "write",
+      "owner": "pulpopay"
+    },
+    {
+      "name": "pulpo_pulpopay_fund_account",
+      "kind": "destructive",
+      "owner": "pulpopay"
+    },
+    {
+      "name": "pulpo_pulpopay_fund_cards",
+      "kind": "destructive",
+      "owner": "pulpopay"
+    },
+    {
+      "name": "pulpo_pulpopay_lock_unlock_card",
+      "kind": "destructive",
+      "owner": "pulpopay"
+    },
+    {
+      "name": "pulpo_pulpopay_reassign_card",
+      "kind": "destructive",
+      "owner": "pulpopay"
+    },
+    {
+      "name": "pulpo_pulpopay_transfer_funds",
+      "kind": "destructive",
+      "owner": "pulpopay"
+    },
+    {
+      "name": "pulpo_pulpopay_withdrawal_cards",
+      "kind": "destructive",
+      "owner": "pulpopay"
+    },
+    {
+      "name": "pulpo_remove_vehicle_from_plan",
+      "kind": "destructive",
+      "owner": "maintenance-reminders"
+    },
+    {
+      "name": "pulpo_rename_document_file",
+      "kind": "write",
+      "owner": "drivers-assignments"
+    },
+    {
+      "name": "pulpo_rename_document_folder",
+      "kind": "write",
+      "owner": "drivers-assignments"
+    },
+    {
+      "name": "pulpo_resolve_catalog_id",
+      "kind": "read",
+      "owner": "getting-started"
+    },
+    {
+      "name": "pulpo_save_custom_fields",
+      "kind": "destructive",
+      "owner": "getting-started"
+    },
+    {
+      "name": "pulpo_search_knowledge_base",
+      "kind": "read",
+      "owner": "getting-started"
+    },
+    {
+      "name": "pulpo_select_account",
+      "kind": "account",
+      "owner": "getting-started"
+    },
+    {
+      "name": "pulpo_set_traffic_fine_plate_portals",
+      "kind": "destructive",
+      "owner": "getting-started"
+    },
+    {
+      "name": "pulpo_unarchive_segment",
+      "kind": "write",
+      "owner": "getting-started"
+    },
+    {
+      "name": "pulpo_update_assignment",
+      "kind": "write",
+      "owner": "drivers-assignments"
+    },
+    {
+      "name": "pulpo_update_catalog_item",
+      "kind": "write",
+      "owner": "getting-started"
+    },
+    {
+      "name": "pulpo_update_checklist",
+      "kind": "write",
+      "owner": "inspections"
+    },
+    {
+      "name": "pulpo_update_checklist_answer",
+      "kind": "write",
+      "owner": "inspections"
+    },
+    {
+      "name": "pulpo_update_driver",
+      "kind": "destructive",
+      "owner": "drivers-assignments"
+    },
+    {
+      "name": "pulpo_update_driver_settings",
+      "kind": "destructive",
+      "owner": "drivers-assignments"
+    },
+    {
+      "name": "pulpo_update_expense",
+      "kind": "write",
+      "owner": "fuel-expenses"
+    },
+    {
+      "name": "pulpo_update_expense_approval_status",
+      "kind": "destructive",
+      "owner": "fuel-expenses"
+    },
+    {
+      "name": "pulpo_update_fleet_health_enabled_findings",
+      "kind": "write",
+      "owner": "fleet-overview"
+    },
+    {
+      "name": "pulpo_update_fuel",
+      "kind": "write",
+      "owner": "fuel-expenses"
+    },
+    {
+      "name": "pulpo_update_fund_card_request",
+      "kind": "destructive",
+      "owner": "pulpopay"
+    },
+    {
+      "name": "pulpo_update_maintenance",
+      "kind": "destructive",
+      "owner": "maintenance-reminders"
+    },
+    {
+      "name": "pulpo_update_maintenance_category",
+      "kind": "write",
+      "owner": "maintenance-reminders"
+    },
+    {
+      "name": "pulpo_update_maintenance_plan",
+      "kind": "destructive",
+      "owner": "maintenance-reminders"
+    },
+    {
+      "name": "pulpo_update_maintenance_status",
+      "kind": "write",
+      "owner": "maintenance-reminders"
+    },
+    {
+      "name": "pulpo_update_maintenance_status_definition",
+      "kind": "write",
+      "owner": "maintenance-reminders"
+    },
+    {
+      "name": "pulpo_update_maintenance_status_flow",
+      "kind": "destructive",
+      "owner": "maintenance-reminders"
+    },
+    {
+      "name": "pulpo_update_maintenance_task",
+      "kind": "write",
+      "owner": "maintenance-reminders"
+    },
+    {
+      "name": "pulpo_update_maintenance_task_type",
+      "kind": "write",
+      "owner": "maintenance-reminders"
+    },
+    {
+      "name": "pulpo_update_odometer",
+      "kind": "destructive",
+      "owner": "vehicles"
+    },
+    {
+      "name": "pulpo_update_payment_method",
+      "kind": "destructive",
+      "owner": "pulpopay"
+    },
+    {
+      "name": "pulpo_update_payment_method_status",
+      "kind": "destructive",
+      "owner": "pulpopay"
+    },
+    {
+      "name": "pulpo_update_pulpopay_controls_settings",
+      "kind": "destructive",
+      "owner": "pulpopay"
+    },
+    {
+      "name": "pulpo_update_pulpopay_fuel_load_check",
+      "kind": "write",
+      "owner": "pulpopay"
+    },
+    {
+      "name": "pulpo_update_reminder",
+      "kind": "write",
+      "owner": "maintenance-reminders"
+    },
+    {
+      "name": "pulpo_update_segment",
+      "kind": "write",
+      "owner": "getting-started"
+    },
+    {
+      "name": "pulpo_update_segment_tree",
+      "kind": "destructive",
+      "owner": "getting-started"
+    },
+    {
+      "name": "pulpo_update_status_flow",
+      "kind": "destructive",
+      "owner": "getting-started"
+    },
+    {
+      "name": "pulpo_update_supplier",
+      "kind": "write",
+      "owner": "getting-started"
+    },
+    {
+      "name": "pulpo_update_tag",
+      "kind": "write",
+      "owner": "getting-started"
+    },
+    {
+      "name": "pulpo_update_traffic_fine_portal_inputs",
+      "kind": "write",
+      "owner": "getting-started"
+    },
+    {
+      "name": "pulpo_update_vehicle",
+      "kind": "write",
+      "owner": "vehicles"
+    },
+    {
+      "name": "pulpo_update_vehicle_basic_data",
+      "kind": "destructive",
+      "owner": "vehicles"
+    },
+    {
+      "name": "pulpo_update_vehicle_insurance",
+      "kind": "write",
+      "owner": "vehicles"
+    },
+    {
+      "name": "pulpo_update_vehicle_status",
+      "kind": "write",
+      "owner": "vehicles"
+    },
+    {
+      "name": "pulpo_validate_odometer",
+      "kind": "read",
+      "owner": "vehicles"
+    },
+    {
+      "name": "pulpo_verify_checklist_answer",
+      "kind": "write",
+      "owner": "inspections"
+    }
+  ]
+}

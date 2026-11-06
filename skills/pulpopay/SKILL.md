@@ -1,6 +1,6 @@
 ---
 name: pulpopay
-description: PulpoPay, Pulpo's fuel card and payments product. Account status and balances, cards and their balances and movements, wallet movements, fuel load checks and compliance score, spending controls, funding requests from drivers and approving them, funding or withdrawing cards, locking cards. Money is involved: reads are free, every movement of money or card change needs explicit confirmation. Use for any PulpoPay or fleet card question.
+description: PulpoPay, Pulpo's fuel card and payments product. Account status and balances, cards and their balances and movements, wallet movements, fuel load checks and compliance score, spending controls, funding requests from drivers and approving them, funding or withdrawing cards, locking cards, and the fleet's payment methods in general (any card: create, edit, status, archive). Money is involved: reads are free, every movement of money or card change needs explicit confirmation. Use for any PulpoPay or fleet card question.
 ---
 
 # PulpoPay
@@ -24,12 +24,7 @@ When you summarize money, give currency, the date range, and whether pending mov
 
 ## Before any write
 
-- **Ask first.** This connector runs a write as soon as you call it; the confirmation is yours (the host may ask too, and it can be set to auto-approve). Show what will change: the record as the user knows it (plate, name or Pulpo ID, never an internal id), and each field as current value to new value. Wait for a plain yes to that exact action. A yes to something else does not count; if the details change, ask again.
-- **Never invent IDs or values.** Take ids from tool results in this conversation. Turn names into catalog ids with `pulpo_resolve_catalog_id`. If a name does not match exactly, or several records fit, list the candidates by name and let the user choose; never pick the closest one or a default.
-- **Replace vs patch.** A tool that replaces a whole record drops whatever you leave out: read the record first, merge your change into it, send everything. A tool that patches takes only the fields that change.
-- **Irreversible means say so.** Deletes, archives, bulk changes and money movements cannot be undone from Pulpo or from here. Say it in the question, ask once per action, and prefer the reversible alternative when one exists (inactive status instead of delete, lock instead of withdraw).
-- **After the call**, report what the tool returned. If it failed, say in plain words what failed and do not retry with different values unless the user agrees.
-- **Not found is not "does not exist".** What you can see depends on the account selected, the user's role and their segments. An empty result or a 404 means "no match among what you can access in this account".
+The connector's write rules apply (it sends them with its instructions; summary in `getting-started`). What follows adds only this area's own rules.
 
 ## Money and card writes: stricter than the general rules
 
@@ -46,3 +41,10 @@ These move money or change card access: `pulpo_pulpopay_fund_account`, `pulpo_pu
 9. After any of these, read the new balance or state back and report it, instead of assuming it worked.
 
 To reconcile card spending with fuel loads, `pulpo_get_fuels_by_payment_method` returns the fuel records paid with a given card (see `fuel-expenses`).
+
+## Payment methods (any card, not only PulpoPay)
+
+- `pulpo_create_payment_method` registers one (name, slug, supplier). `pulpo_update_payment_method` replaces the whole record: read `pulpo_get_payment_method_details`, merge the change, send everything. For a status change only (activate, suspend, block) use `pulpo_update_payment_method_status`.
+- `pulpo_archive_payment_methods` hides them from active lists and is reversible (`archive: false`). `pulpo_delete_payment_method` is permanent: offer archiving first.
+- `pulpo_export_payment_methods` returns a file, not data to answer from.
+- `pulpo_pulpopay_create_pomelo_client` creates the account's client at Pomelo, PulpoPay's card issuer. It is part of PulpoPay onboarding, not a fleet task: call it only when the user explicitly asks for exactly that.

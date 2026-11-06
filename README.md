@@ -61,4 +61,4 @@ Nothing needs to be configured: sign-in is OAuth through Pulpo's identity provid
 
 ## Source
 
-Maintained by Pulpo. The tools themselves are served by Pulpo's MCP server, so they update without a new plugin release; this repository holds only the connection and the skills. Licensed under MIT, see `LICENSE`.
+Maintained by Pulpo. The tools themselves are served by Pulpo's MCP server, so they update without a new plugin release; this repository holds only the connection and the skills. `tools.json` lists every tool the server serves and the one skill that owns it; `node scripts/check-catalog.mjs` (run in CI on every pull request) fails when a skill names a tool the server does not serve or a tool has no owner. Refresh `tools.json` when the server's catalog changes. Licensed under MIT, see `LICENSE`.
