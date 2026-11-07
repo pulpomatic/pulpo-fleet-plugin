@@ -458,11 +458,6 @@
       "owner": "pulpopay"
     },
     {
-      "name": "pulpo_get_knowledge_base_page",
-      "kind": "read",
-      "owner": "getting-started"
-    },
-    {
       "name": "pulpo_get_maintenance_details",
       "kind": "read",
       "owner": "maintenance-reminders"
@@ -583,11 +578,6 @@
       "owner": "pulpopay"
     },
     {
-      "name": "pulpo_get_pulpopay_document",
-      "kind": "read",
-      "owner": "pulpopay"
-    },
-    {
       "name": "pulpo_get_pulpopay_driver_cards",
       "kind": "read",
       "owner": "pulpopay"
@@ -614,11 +604,6 @@
     },
     {
       "name": "pulpo_get_pulpopay_movement_types",
-      "kind": "read",
-      "owner": "pulpopay"
-    },
-    {
-      "name": "pulpo_get_pulpopay_physical_card",
       "kind": "read",
       "owner": "pulpopay"
     },
@@ -684,11 +669,6 @@
     },
     {
       "name": "pulpo_get_segment_tree_v2",
-      "kind": "read",
-      "owner": "getting-started"
-    },
-    {
-      "name": "pulpo_get_segments_by_ids",
       "kind": "read",
       "owner": "getting-started"
     },
@@ -1033,11 +1013,6 @@
       "owner": "pulpopay"
     },
     {
-      "name": "pulpo_pulpopay_card_funding_healthcheck",
-      "kind": "read",
-      "owner": "pulpopay"
-    },
-    {
       "name": "pulpo_pulpopay_change_card_nip",
       "kind": "destructive",
       "owner": "pulpopay"
@@ -1081,11 +1056,6 @@
       "name": "pulpo_pulpopay_withdrawal_cards",
       "kind": "destructive",
       "owner": "pulpopay"
-    },
-    {
-      "name": "pulpo_read_vehicle_ownership_documents",
-      "kind": "read",
-      "owner": "vehicles"
     },
     {
       "name": "pulpo_remove_vehicle_from_plan",
