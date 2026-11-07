@@ -418,6 +418,11 @@
       "owner": "fleet-overview"
     },
     {
+      "name": "pulpo_get_fleet_health",
+      "kind": "read",
+      "owner": "fleet-overview"
+    },
+    {
       "name": "pulpo_get_fleet_health_enabled_findings",
       "kind": "read",
       "owner": "fleet-overview"
@@ -793,6 +798,11 @@
       "owner": "vehicles"
     },
     {
+      "name": "pulpo_get_vehicle_telematics_mapping",
+      "kind": "read",
+      "owner": "vehicles"
+    },
+    {
       "name": "pulpo_get_vehicle_upcoming_maintenances",
       "kind": "read",
       "owner": "maintenance-reminders"
@@ -971,6 +981,11 @@
       "name": "pulpo_list_tags",
       "kind": "read",
       "owner": "getting-started"
+    },
+    {
+      "name": "pulpo_list_telematics_connections",
+      "kind": "read",
+      "owner": "fleet-overview"
     },
     {
       "name": "pulpo_list_traffic_fine_plates",

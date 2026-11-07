@@ -1,11 +1,11 @@
 ---
 name: fleet-overview
-description: Answer "how is my fleet doing?" from Pulpo. Vehicle counts, counts by status or type, the fleet health score (Salud de flota), vehicles missing basic data, vehicles without driver, odometer, or insurance, expired or expiring insurance, vehicle alerts, and a short list of what needs attention. Reads only, except turning finding types on or off for the account. Use for fleet size, fleet health, findings, and "what should I look at today".
+description: Answer "how is my fleet doing?" from Pulpo. Vehicle counts, fleet health score (Salud de flota) and findings, vehicles missing basic data, driver, odometer or insurance, vehicle alerts, and Terminal telematics connection status and last sync. Reads only, except turning finding types on or off for the account. Use for fleet size, fleet health, findings, and "what should I look at today".
 ---
 
 # Pulpo fleet overview and health
 
-Reads only. Everything is scoped to the selected account and to the segments the user can see (see `getting-started` if an account must be selected).
+Vehicle results are scoped to the selected account and the segments the user can see. Terminal connections are account-level and subject to the user's permissions. See `getting-started` if an account must be selected.
 
 ## Know which number is which
 
@@ -16,6 +16,7 @@ Reads only. Everything is scoped to the selected account and to the segments the
 | The fleet's health score | `pulpo_get_fleet_score` | Whole number 0 to 100, the average over the vehicles the user can see. `fleetScore: null` means nothing is scored yet; report `vehiclesEvaluated` out of `vehiclesTotal`. |
 | One vehicle's score and what it lacks | `pulpo_get_vehicle_score` | Takes a Pulpo ID (`V-0012`) or plate; VIN or economic number also work. |
 | What basic data is missing | `pulpo_get_fleet_basic_data_pending` | Counts per missing field (plate, VIN, brand, model, year) and the empty "En Alta" records, with the worst vehicles first. Filter with `only`, page with `skip`/`take`. |
+| Findings across visible vehicles | `pulpo_get_fleet_health` | Pages through visible vehicles and returns only rows with findings. Use `nextSkip` as the next `skip` until it is null, even after an empty findings page. |
 | Findings on one vehicle | `pulpo_get_vehicle_fleet_health` | Needs the numeric `vehicleId`. Returns `discoveries`, which are findings, not the score. |
 | Which findings are switched on | `pulpo_get_fleet_health_enabled_findings` | Call it before interpreting findings. |
 | Active alerts on a vehicle | `pulpo_get_vehicle_alerts` | Numeric `vehicleId`. Empty array means none. |
@@ -26,7 +27,11 @@ Rules that save you from wrong answers:
 - **Never count missing data by paging `pulpo_list_vehicles`.** Its filters do not see empty fields and the numbers will not match the screen. Use `pulpo_get_fleet_basic_data_pending`.
 - **Counts that disagree are not an error.** The account count and a filtered list can differ because of segments and archived vehicles. State the scope you used ("vehicles you can see, not archived").
 - **A disabled finding is not a clean result.** If a finding type is off in `pulpo_get_fleet_health_enabled_findings`, say it is not being checked.
-- Fleet health findings are `VEHICLES_IN_INOPERABLE_STATUSES`, `VEHICLES_WITHOUT_ASSIGNED_DRIVERS`, `VEHICLES_WITHOUT_RECENT_ODOMETER`, `VEHICLES_WITH_NEAR_ASSIGNMENT_EXPIRATION`, `VEHICLES_WITH_NEAR_INSURANCE_EXPIRATION`, `VEHICLES_WITHOUT_INSURANCE`, `VEHICLES_WITH_INSURANCE_EXPIRED`. There is no single call that lists a finding across the whole fleet, so build the fleet-level view from filters below and confirm the few vehicles that matter with `pulpo_get_vehicle_fleet_health`.
+- Fleet health findings are `VEHICLES_IN_INOPERABLE_STATUSES`, `VEHICLES_WITHOUT_ASSIGNED_DRIVERS`, `VEHICLES_WITHOUT_RECENT_ODOMETER`, `VEHICLES_WITH_NEAR_ASSIGNMENT_EXPIRATION`, `VEHICLES_WITH_NEAR_INSURANCE_EXPIRATION`, `VEHICLES_WITHOUT_INSURANCE`, `VEHICLES_WITH_INSURANCE_EXPIRED`. If the connector lacks the fleet-wide findings tool, use the filters below and confirm individual vehicles with `pulpo_get_vehicle_fleet_health`.
+
+## Terminal connections
+
+When the connector lists `pulpo_list_telematics_connections`, use it for provider connection status in the selected account. Set `includeLastSync: true` when asked for the last reported provider sync. If the tool is absent, say the current connector cannot retrieve Terminal connection status. Report an unknown or temporarily unavailable timestamp separately from the connection status. Provider sync and delivery of readings to a vehicle are separate. For a vehicle's mapping, use the `vehicles` skill.
 
 ## Filters for the common questions
 
