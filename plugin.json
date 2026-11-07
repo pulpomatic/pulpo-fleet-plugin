@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "pulpo-fleet",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Work with your Pulpo fleet from ChatGPT, Codex and Claude: vehicles, drivers, fuel, expenses, maintenance, reminders, inspections and PulpoPay, with your own Pulpo permissions. Every change is confirmed with you first.",
   "author": {
     "name": "Pulpo",
@@ -116,7 +116,7 @@
       },
       "publication": {
         "countries": [],
-        "release_notes": "1.1.0: one owner skill per tool for all 260 tools (tools.json, checked in CI); the write and account rules now come from the server's instructions instead of a copy in every skill; the routing table covers every area and says how to choose when two fit."
+        "release_notes": "1.2.0 adds fleet-wide health findings, Terminal connection status and last reported sync, and Terminal mapping for a visible vehicle. These reads become available with the matching Fleet Agent release."
       }
     }
   }
