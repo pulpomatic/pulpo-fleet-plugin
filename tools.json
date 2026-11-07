@@ -74,7 +74,7 @@
     },
     {
       "name": "pulpo_create_driver",
-      "kind": "write",
+      "kind": "destructive",
       "owner": "drivers-assignments"
     },
     {
