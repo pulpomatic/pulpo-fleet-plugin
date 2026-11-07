@@ -5,7 +5,7 @@ description: Start here for any Pulpo request. Explains how the Pulpo connector 
 
 # Pulpo: getting started
 
-The Pulpo connector gives you the tools of Pulpo's fleet agent, named `pulpo_*`, and acts with the signed-in user's role, segments and selected account. During the read-only rollout, the server offers reads and account selection. Follow write guidance only when the server lists the relevant write tool.
+The Pulpo connector gives you the tools of Pulpo's fleet agent, named `pulpo_*`, and acts with the signed-in user's role, segments and selected account. During the read-only rollout, the server offers reads and account selection. Use the tools and input schemas listed by the connected server. Follow write guidance only when it lists the relevant write tool.
 
 ## 1. Choose the account first
 
@@ -34,7 +34,7 @@ Most questions are answered by reads alone. Start there.
 
 ## 3. Reading well
 
-- Lists are pages (default 10 to 20 rows). Never present the length of a page as a total. Vehicles have `pulpo_get_vehicles_count`, and `pulpo_list_vehicles` returns the filtered total in `_metadata._total_rows`; ask for `take: 1` when you only need a count. For other lists, say "in the first N rows" or keep paging while it stays useful (stop at a few hundred rows and offer to narrow the question).
+- Use `pulpo_get_vehicles_count` for the number of unarchived vehicles visible in the selected account. It returns a number. For a filtered list, use `_metadata._total_rows` when the server returns it. When a vehicle search returns `hasMore: true`, say there are more matches and narrow the search. Report the number of rows you checked when the response has no total.
 - Narrow with the tool's own filters (dates, status, vehicle) before you pull rows. Filters are serialized JSON; copy the shapes from the tool descriptions instead of inventing fields.
 - Exports (`pulpo_export_vehicles`, `pulpo_export_drivers` and the like) return files, not data you can read. Do not use them to answer questions.
 - Dates are ISO 8601. You do not get a clock from Pulpo: use the current date the user or host gives you, and the user's own timezone when it matters.
