@@ -15,8 +15,8 @@ The connector's instructions cover this. In short: `pulpo_list_accounts` returns
 
 | The user wants | Skill |
 | --- | --- |
-| Fleet size, health score, missing data, what needs attention, which finding types are enabled | `fleet-overview` |
-| One vehicle: find it, its status, insurance policy, contract, odometer readings and change history; vehicle catalogs (types, brands, statuses); create, change, archive or delete vehicles | `vehicles` |
+| Fleet size, health score, findings, missing data, what needs attention, which finding types are enabled, Terminal connection status and last sync | `fleet-overview` |
+| One vehicle: find it, its status, insurance policy, contract, odometer readings, Terminal mapping and change history; vehicle catalogs (types, brands, statuses); create, change, archive or delete vehicles | `vehicles` |
 | Work orders, maintenance plans, maintenance setup (status flows, categories, task types), and reminders: anything with a due date | `maintenance-reminders` |
 | Fuel loads, expenses, approvals, cost questions | `fuel-expenses` |
 | Drivers, their licenses and documents, who drives what, vehicle and card assignments | `drivers-assignments` |
