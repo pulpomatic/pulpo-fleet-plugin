@@ -31,7 +31,7 @@ Rules that save you from wrong answers:
 
 ## Terminal connections
 
-Use `pulpo_list_telematics_connections` for provider connection status in the selected account. Set `includeLastSync: true` when asked for the last reported provider sync. Report an unknown or temporarily unavailable timestamp separately from the connection status. Provider sync and delivery of readings to a vehicle are separate. For a vehicle's mapping, use the `vehicles` skill.
+When the connector lists `pulpo_list_telematics_connections`, use it for provider connection status in the selected account. Set `includeLastSync: true` when asked for the last reported provider sync. If the tool is absent, say the current connector cannot retrieve Terminal connection status. Report an unknown or temporarily unavailable timestamp separately from the connection status. Provider sync and delivery of readings to a vehicle are separate. For a vehicle's mapping, use the `vehicles` skill.
 
 ## Filters for the common questions
 
