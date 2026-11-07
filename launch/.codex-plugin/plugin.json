@@ -1,0 +1,46 @@
+{
+  "name": "pulpo-fleet",
+  "version": "1.2.0",
+  "description": "Read vehicles, fleet health findings and Terminal integration status with your Pulpo permissions.",
+  "author": {
+    "name": "Pulpo",
+    "url": "https://www.getpulpo.com/"
+  },
+  "homepage": "https://www.getpulpo.com/",
+  "repository": "https://github.com/pulpomatic/pulpo-fleet-plugin",
+  "license": "MIT",
+  "keywords": [
+    "pulpo",
+    "fleet",
+    "vehicles",
+    "fleet health",
+    "terminal",
+    "mcp"
+  ],
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json",
+  "interface": {
+    "displayName": "Pulpo Fleet",
+    "shortDescription": "Read your Pulpo fleet",
+    "longDescription": "Pulpo Fleet helps fleet managers and operators look up visible vehicles, count their fleet, review fleet health findings, and inspect Terminal connections and vehicle mappings. Sign in to Pulpo to use your own role and segment access. You can choose which eligible account to use. That choice updates your active account for this OAuth client. Fleet records and payment data stay read-only in this release.",
+    "developerName": "Pulpo",
+    "category": "Productivity",
+    "capabilities": [
+      "Interactive",
+      "Read"
+    ],
+    "websiteURL": "https://www.getpulpo.com/",
+    "privacyPolicyURL": "https://www.getpulpo.com/politicas-de-cookies-y-privacidad",
+    "termsOfServiceURL": "https://www.getpulpo.com/terminos-y-condiciones",
+    "defaultPrompt": [
+      "How many vehicles can I see in my Pulpo fleet?",
+      "Show fleet health findings for vehicles I can access.",
+      "List Terminal connections and their latest reported sync."
+    ],
+    "brandColor": "#183B73",
+    "composerIcon": "./assets/logo.png",
+    "logo": "./assets/logo.png",
+    "screenshots": [],
+    "supportURL": "https://www.getpulpo.com/contacto"
+  }
+}

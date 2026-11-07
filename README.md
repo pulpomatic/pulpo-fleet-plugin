@@ -4,6 +4,8 @@ Pulpo Fleet connects [Pulpo](https://www.getpulpo.com/) to Claude (Claude Code a
 
 It acts with your own Pulpo permissions. The assistant sees and changes only what your role, your segments and the account you pick allow in Pulpo.
 
+The [directory release package](launch/README.md) covers the seven tools of the matching delegated server rollout.
+
 ## What this plugin contains
 
 - A connection to Pulpo's remote MCP server, `https://eu1.getpulpo.com/mcp` (Streamable HTTP), declared in `.mcp.json` (Claude and Codex) and `mcp.json` (Agent Plugins / OpenAI directory). The server serves the tools of Pulpo's fleet agent as `pulpo_*` tools, plus `pulpo_list_accounts` and `pulpo_select_account` for users who belong to several accounts.
@@ -31,7 +33,7 @@ It contains no hooks, scripts, executables or credentials, and it does not read 
 /plugin install pulpo-fleet@pulpo
 ```
 
-Then run any Pulpo question; Claude opens the Pulpo sign-in the first time. In claude.ai, install Pulpo Fleet from the plugin directory and sign in to Pulpo when prompted.
+Then run any Pulpo question; Claude opens the Pulpo sign-in the first time. On Claude web, add Pulpo as a custom connector when your workspace allows it. [Claude connector guidance](https://claude.com/docs/directory/publish)
 
 **Codex**
 

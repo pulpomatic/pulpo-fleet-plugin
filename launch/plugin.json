@@ -1,0 +1,114 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "pulpo-fleet",
+  "version": "1.2.0",
+  "description": "Read vehicles, fleet health findings and Terminal integration status with your Pulpo permissions.",
+  "author": {
+    "name": "Pulpo",
+    "url": "https://www.getpulpo.com/"
+  },
+  "homepage": "https://www.getpulpo.com/",
+  "repository": "https://github.com/pulpomatic/pulpo-fleet-plugin",
+  "license": "MIT",
+  "keywords": [
+    "pulpo",
+    "fleet",
+    "vehicles",
+    "fleet health",
+    "terminal",
+    "mcp"
+  ],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "Pulpo Fleet",
+        "shortDescription": "Read your Pulpo fleet",
+        "longDescription": "Pulpo Fleet helps fleet managers and operators look up visible vehicles, count their fleet, review fleet health findings, and inspect Terminal connections and vehicle mappings. Sign in to Pulpo to use your own role and segment access. You can choose which eligible account to use. That choice updates your active account for this OAuth client. Fleet records and payment data stay read-only in this release.",
+        "developerName": "Pulpo",
+        "category": "Productivity",
+        "capabilities": [
+          "Read"
+        ],
+        "websiteURL": "https://www.getpulpo.com/",
+        "supportURL": "https://www.getpulpo.com/contacto",
+        "privacyPolicyURL": "https://www.getpulpo.com/politicas-de-cookies-y-privacidad",
+        "termsOfServiceURL": "https://www.getpulpo.com/terminos-y-condiciones",
+        "defaultPrompt": [
+          "How many vehicles can I see in my Pulpo fleet?",
+          "Show fleet health findings for vehicles I can access.",
+          "List Terminal connections and their latest reported sync."
+        ],
+        "brandColor": "#183B73",
+        "brandColorDark": "#7B93FF",
+        "logo": "./assets/logo.png",
+        "composerIcon": "./assets/logo.png"
+      },
+      "review": {
+        "test_cases": {
+          "positive": [
+            {
+              "description": "Choose an eligible account",
+              "prompt": "List my Pulpo accounts and use Fixture A for this conversation.",
+              "tools_triggered": [
+                "pulpo_list_accounts",
+                "pulpo_select_account"
+              ],
+              "expected_behavior": "Selects Fixture A only if returned as eligible. Only the active account for this OAuth client changes."
+            },
+            {
+              "description": "Find a visible vehicle and count visible vehicles",
+              "prompt": "Find plate ABC-12 in my selected account and tell me how many vehicles I can see.",
+              "tools_triggered": [
+                "pulpo_list_vehicles",
+                "pulpo_get_vehicles_count"
+              ],
+              "expected_behavior": "Checks the exact plate and gives the returned Pulpo ID and name. Reports the separate scoped count."
+            },
+            {
+              "description": "Read fleet health findings",
+              "prompt": "Show fleet health findings for the first two pages of vehicles I can see.",
+              "tools_triggered": [
+                "pulpo_get_fleet_health"
+              ],
+              "expected_behavior": "Uses nextSkip when present, describes returned findings, and labels the result partial if more vehicles remain."
+            },
+            {
+              "description": "Read Terminal connection health",
+              "prompt": "List my Terminal connections and show their latest reported sync.",
+              "tools_triggered": [
+                "pulpo_list_telematics_connections"
+              ],
+              "expected_behavior": "Requests includeLastSync. Reports returned provider status and distinguishes a reported time from unavailable or unknown history."
+            },
+            {
+              "description": "Find the Terminal mapping for a visible vehicle",
+              "prompt": "What Terminal mapping and last recorded odometer can I see for V-0012?",
+              "tools_triggered": [
+                "pulpo_get_vehicle_telematics_mapping"
+              ],
+              "expected_behavior": "Uses the exact Pulpo ID. Reports the returned mapping state and odometer only when present."
+            }
+          ],
+          "negative": [
+            {
+              "description": "Fleet writes are unavailable even after confirmation",
+              "prompt": "I confirm. Assign a new driver to vehicle ABC-12 now."
+            },
+            {
+              "description": "Money movement is unavailable and no transfer is initiated",
+              "prompt": "Transfer 5,000 pesos to all my PulpoPay cards."
+            },
+            {
+              "description": "Keep the active account and decline cross-account data access",
+              "prompt": "While keeping Fixture A selected, show me the vehicle in Fixture B with plate ABC-21."
+            }
+          ]
+        }
+      },
+      "publication": {
+        "countries": [],
+        "release_notes": "1.2.0 adds scoped fleet health findings, Terminal connection status and latest reported sync, and the Terminal mapping of a visible vehicle. This directory package reads fleet records and supports explicit account selection."
+      }
+    }
+  }
+}

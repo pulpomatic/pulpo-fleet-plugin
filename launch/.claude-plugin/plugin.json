@@ -1,0 +1,23 @@
+{
+  "name": "pulpo-fleet",
+  "displayName": "Pulpo Fleet",
+  "version": "1.2.0",
+  "description": "Read vehicles, fleet health findings and Terminal integration status with your Pulpo permissions.",
+  "author": {
+    "name": "Pulpo",
+    "url": "https://www.getpulpo.com/"
+  },
+  "homepage": "https://www.getpulpo.com/",
+  "privacyPolicyUrl": "https://www.getpulpo.com/politicas-de-cookies-y-privacidad",
+  "repository": "https://github.com/pulpomatic/pulpo-fleet-plugin",
+  "license": "MIT",
+  "keywords": [
+    "pulpo",
+    "fleet",
+    "vehicles",
+    "fleet health",
+    "terminal",
+    "mcp"
+  ],
+  "skills": "./skills/"
+}

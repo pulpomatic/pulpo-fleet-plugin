@@ -1,0 +1,93 @@
+{
+  "tools": [
+    {
+      "name": "pulpo_list_accounts",
+      "title": "List Pulpo Accounts",
+      "owner": "getting-started",
+      "inputProperties": [],
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "pulpo_select_account",
+      "title": "Select Pulpo Account",
+      "owner": "getting-started",
+      "inputProperties": [
+        "accountId"
+      ],
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "pulpo_list_vehicles",
+      "title": "List Visible Vehicles",
+      "owner": "fleet-overview",
+      "inputProperties": [
+        "searchText"
+      ],
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "pulpo_get_vehicles_count",
+      "title": "Count Visible Vehicles",
+      "owner": "fleet-overview",
+      "inputProperties": [],
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "pulpo_get_fleet_health",
+      "title": "List Fleet Health Findings",
+      "owner": "fleet-overview",
+      "inputProperties": [
+        "searchText",
+        "skip",
+        "take"
+      ],
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "pulpo_list_telematics_connections",
+      "title": "List Terminal Connections",
+      "owner": "telematics",
+      "inputProperties": [
+        "includeLastSync"
+      ],
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "pulpo_get_vehicle_telematics_mapping",
+      "title": "Get Vehicle Terminal Mapping",
+      "owner": "telematics",
+      "inputProperties": [
+        "pulpoId"
+      ],
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false
+      }
+    }
+  ]
+}
