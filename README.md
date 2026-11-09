@@ -31,7 +31,7 @@ It contains no hooks, scripts, executables or credentials, and it does not read 
 /plugin install pulpo-fleet@pulpo
 ```
 
-Then run any Pulpo question; Claude opens the Pulpo sign-in the first time. In claude.ai, install Pulpo Fleet from the plugin directory and sign in to Pulpo when prompted.
+Then run any Pulpo question; Claude opens the Pulpo sign-in the first time. On Claude web (claude.ai) and the desktop app, add Pulpo Fleet as a custom connector (**Settings → Connectors → Add custom connector**: `https://eu1.getpulpo.com/mcp`). [Claude custom connector guide](https://support.claude.com/en/articles/11175166-get-started-with-custom-connectors-using-remote-mcp)
 
 **Codex**
 
