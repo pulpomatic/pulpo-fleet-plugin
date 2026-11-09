@@ -18,6 +18,11 @@
       "owner": "vehicles"
     },
     {
+      "name": "pulpo_assign_driver",
+      "kind": "destructive",
+      "owner": "drivers-assignments"
+    },
+    {
       "name": "pulpo_bulk_end_assignments",
       "kind": "destructive",
       "owner": "drivers-assignments"
@@ -46,11 +51,6 @@
       "name": "pulpo_confirm_fund_card_request",
       "kind": "destructive",
       "owner": "pulpopay"
-    },
-    {
-      "name": "pulpo_create_assignment",
-      "kind": "write",
-      "owner": "drivers-assignments"
     },
     {
       "name": "pulpo_create_catalog_item",
@@ -171,11 +171,6 @@
       "name": "pulpo_create_tag",
       "kind": "write",
       "owner": "getting-started"
-    },
-    {
-      "name": "pulpo_create_user_assignment",
-      "kind": "write",
-      "owner": "drivers-assignments"
     },
     {
       "name": "pulpo_create_vehicle",
@@ -361,11 +356,6 @@
       "name": "pulpo_export_vehicles",
       "kind": "read",
       "owner": "getting-started"
-    },
-    {
-      "name": "pulpo_extend_vehicle_user_assignment",
-      "kind": "write",
-      "owner": "drivers-assignments"
     },
     {
       "name": "pulpo_get_assignments_autocomplete",
@@ -1116,11 +1106,6 @@
       "name": "pulpo_unarchive_segment",
       "kind": "write",
       "owner": "getting-started"
-    },
-    {
-      "name": "pulpo_update_assignment",
-      "kind": "write",
-      "owner": "drivers-assignments"
     },
     {
       "name": "pulpo_update_catalog_item",
