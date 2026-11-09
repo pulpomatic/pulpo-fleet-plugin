@@ -31,7 +31,7 @@ It contains no hooks, scripts, executables or credentials, and it does not read 
 /plugin install pulpo-fleet@pulpo
 ```
 
-Then run any Pulpo question; Claude opens the Pulpo sign-in the first time. On Claude web (claude.ai) and the desktop app, add Pulpo Fleet as a custom connector (**Settings → Connectors → Add custom connector**: `https://eu1.getpulpo.com/mcp`). [Claude custom connector guide](https://support.claude.com/en/articles/11175166-get-started-with-custom-connectors-using-remote-mcp)
+Then run any Pulpo question; Claude opens the Pulpo sign-in the first time. On Claude web (claude.ai) and the desktop app, add Pulpo Fleet as a custom connector (**Settings → Connectors → Add custom connector**: `https://eu1.getpulpo.com/mcp`). The custom connector receives all tools and server instructions directly; bundled skills are loaded when using Claude Code or Codex. [Claude custom connector guide](https://support.claude.com/en/articles/11175166-get-started-with-custom-connectors-using-remote-mcp)
 
 **Codex**
 
@@ -49,7 +49,7 @@ Nothing needs to be configured: sign-in is OAuth through Pulpo's identity provid
 
 - **What it reads.** On each tool call the assistant sends the tool's arguments (for example a plate, a date range or a record id) to Pulpo and receives records from your Pulpo account: vehicles, drivers and their licenses, fuel and expense records, maintenance, reminders, inspections, payment methods, and PulpoPay balances, cards (masked numbers) and movements. That content enters the conversation with your AI assistant and is handled under that product's own terms.
 - **What it writes.** It can create, edit, approve, assign, archive and delete records, and can move money between PulpoPay accounts and cards, using the same permissions you have in Pulpo. Every write is performed with your own credentials and permissions.
-- **Confirmation.** The bundled skills tell the assistant to show each change and wait for your explicit yes before writing, and to say plainly that deletes, archives and money movements cannot be undone. The server itself does not ask: your client may also ask before running tools it marks as destructive, and a client set to auto-approve removes that check. If you do not want any writes, leave tool approval on, or deny the write tools in your client.
+- **Confirmation.** The bundled skills (and server instructions for direct connectors) tell the assistant to show each change and wait for your explicit yes before writing, and to say plainly that deletes, archives and money movements cannot be undone. The server itself does not ask: your client may also ask before running tools it marks as destructive, and a client set to auto-approve removes that check. If you do not want any writes, leave tool approval on, or deny the write tools in your client.
 - **Limits you should know.** The assistant never gets your Pulpo password. Changing a vehicle's plate, VIN, brand, model or year takes two calls: the first only shows the current and new values, and nothing is written until the second, confirmed one. Administrators and roles cannot be changed through this plugin; use Pulpo. Lists come in bounded pages, so very large fleets are summarized from the first pages unless you narrow the question.
 - **Where it connects.** The only network connection is to Pulpo's MCP server at `eu1.getpulpo.com`, operated by Pulpo.
 
