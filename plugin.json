@@ -90,12 +90,9 @@
               "description": "Write with confirmation: assign a driver",
               "prompt": "Assign driver Juan Perez to vehicle ABC-123 starting today.",
               "tools_triggered": [
-                "pulpo_list_drivers",
-                "pulpo_list_vehicles",
-                "pulpo_get_vehicle_assignments",
-                "pulpo_create_assignment"
+                "pulpo_assign_driver"
               ],
-              "expected_behavior": "Resolves the driver and the vehicle from tool results, checks the vehicle's current assignments for overlap, shows the planned assignment (driver, vehicle, start date, any assignment it would end) and calls pulpo_create_assignment only after the user answers yes."
+              "expected_behavior": "Calls pulpo_assign_driver with the vehicle and the driver as the user named them. If it asks whether to add or replace the vehicle's current driver, asks the user and passes the answer. Shows the planned assignment (driver, vehicle, start date and everything it changes: assignments that end, segments, tasks) and makes the call that writes only after the user answers yes."
             }
           ],
           "negative": [
