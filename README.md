@@ -20,7 +20,7 @@ It acts with your own Pulpo permissions. The assistant sees and changes only wha
 | `pulpopay` | PulpoPay balances, cards, movements, funding requests, with stricter rules for money |
 | `inspections` | Checklist forms and recorded vehicle inspections |
 
-It contains no hooks, scripts, executables or credentials, and it does not read your environment or files.
+It contains no hooks or credentials, and it does not read your environment or files. `scripts/` and `evals/` are development tools that install with the plugin but never run when it is used.
 
 ## Install
 
@@ -59,6 +59,16 @@ Nothing needs to be configured: sign-in is OAuth through Pulpo's identity provid
 - Support: <https://www.getpulpo.com/contacto>
 - Privacy policy: <https://www.getpulpo.com/politicas-de-cookies-y-privacidad>
 - Terms: <https://www.getpulpo.com/terminos-y-condiciones>
+
+## Evals
+
+`evals/` holds a suite for `claude plugin eval` that measures what the skills add over the connector alone: each case is a real request (in Spanish, as users write), answered against mocks of the server: every one of its tools, with its real description and schema (`evals/mocks/pulpo-fleet/_tools.json`, the server's `tools/list`), answers with the case's mock or a default one (an empty page for a read, a generic proposal for a write; `scripts/eval-default-mocks.mjs`; the six exports are left out because the eval caps a server at 256 mocks), and the server's real instructions go in the system prompt (`evals/connector-instructions.md`). Graders check which tools are called and never called (no `pulpo_apply_change` without a yes, no money tool after an instruction hidden in a record, no deleted driver) and a model judges the reply against one criterion per grader.
+
+```bash
+scripts/eval-compare.sh --runs 3
+```
+
+runs the suite twice, with the skills and with the same plugin without them, and prints both scores per case. It needs Claude Code signed in and costs a few dollars per run of the whole suite. `claude plugin eval` serves only the tools that have a mock, so a "never called" grader on an unmocked or misspelled tool always passes: CI runs `node scripts/eval-default-mocks.mjs` (every tool has a mock) and `node scripts/check-evals.mjs` (the mocked catalog matches `tools.json`, and every grader and mock names a served tool). After changing `evals/connector-instructions.md`, run `node scripts/eval-instructions.mjs --write`.
 
 ## Source
 

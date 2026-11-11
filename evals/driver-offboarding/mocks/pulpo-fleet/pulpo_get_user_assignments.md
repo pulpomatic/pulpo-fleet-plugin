@@ -1,0 +1,1 @@
+{"vehicleUser": [{"assignmentId": 3301, "vehicle": {"id": 7012, "pulpoId": "V-0012", "name": "Unidad 12"}, "startDate": "2025-02-01", "endDate": null}], "userPaymentMethod": [{"assignmentId": 4410, "paymentMethod": {"id": 9001, "name": "PulpoPay ···· 4821"}, "startDate": "2025-02-01", "endDate": null}]}

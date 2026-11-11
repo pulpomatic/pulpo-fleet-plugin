@@ -1,0 +1,1 @@
+{"id": 501, "name": "Juan Pérez", "email": "juan.perez@transnorte.mx", "userStatus": {"id": 60, "name": "Activo"}, "allowAccess": true, "licenseNumber": "NL-88213", "assignedVehicle": {"id": 7012, "pulpoId": "V-0012", "name": "Unidad 12"}}
