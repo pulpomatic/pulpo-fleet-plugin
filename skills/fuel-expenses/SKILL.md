@@ -23,7 +23,7 @@ Rules for numbers:
 
 ## Before any write
 
-The connector's write rules apply (it sends them with its instructions; summary in `getting-started`). What follows adds only this area's own rules.
+The connector's write rules apply (it sends them with its instructions; summary in `getting-started`). What follows adds only this area's own rules. Undo here: a fuel load or an expense created here is undone with `pulpo_undo_change` (it is deleted again, while nobody changed it). Edits replace the whole record and deletes are final: their preview says they cannot be undone.
 
 ## Writing
 
