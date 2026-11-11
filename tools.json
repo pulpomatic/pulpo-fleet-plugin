@@ -1,7 +1,12 @@
 {
-  "source": "pulpomatic/PULPO-FLEET-AGENT src/mcp/tool-annotations.ts @ 2011eecfd (+ pulpo_list_accounts, pulpo_select_account)",
+  "source": "pulpomatic/PULPO-FLEET-AGENT src/mcp/tool-annotations.ts @ 2011eecfd (+ pulpo_list_accounts, pulpo_select_account, pulpo_apply_change)",
   "note": "One owner skill per tool. Other skills may name a tool too; the owner is where its rules live. Checked by scripts/check-catalog.mjs.",
   "tools": [
+    {
+      "name": "pulpo_apply_change",
+      "kind": "destructive",
+      "owner": "pulpopay"
+    },
     {
       "name": "pulpo_archive_payment_methods",
       "kind": "destructive",
