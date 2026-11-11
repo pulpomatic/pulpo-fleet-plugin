@@ -20,7 +20,7 @@ It acts with your own Pulpo permissions. The assistant sees and changes only wha
 | `pulpopay` | PulpoPay balances, cards, movements, funding requests, with stricter rules for money |
 | `inspections` | Checklist forms and recorded vehicle inspections |
 
-It contains no hooks, scripts, executables or credentials, and it does not read your environment or files.
+It contains no hooks, executables or credentials, and it does not read your environment or files. `scripts/` and `evals/` are for development: they never run when the plugin is used.
 
 ## Install
 
@@ -59,6 +59,16 @@ Nothing needs to be configured: sign-in is OAuth through Pulpo's identity provid
 - Support: <https://www.getpulpo.com/contacto>
 - Privacy policy: <https://www.getpulpo.com/politicas-de-cookies-y-privacidad>
 - Terms: <https://www.getpulpo.com/terminos-y-condiciones>
+
+## Evals
+
+`evals/` holds a suite for `claude plugin eval` that measures what the skills add over the connector alone: each case is a real request (in Spanish, as users write), answered against mocks of the server that serve its real `tools/list` (`evals/mocks/pulpo-fleet/_tools.json`) and, in the system prompt, its real instructions (`evals/connector-instructions.md`). Graders check which tools are called and never called (no `pulpo_apply_change` without a yes, no money tool after an instruction hidden in a record, no deleted driver) and a model judges the reply against one criterion per grader.
+
+```bash
+scripts/eval-compare.sh --runs 3
+```
+
+runs the suite twice, with the skills and with the same plugin without them, and prints both scores per case. It needs Claude Code signed in and costs a few dollars per run of the whole suite. `node scripts/check-evals.mjs` (CI) checks that the mocked catalog matches `tools.json` and that every grader names a tool the server serves, since a "never called" grader on a misspelled tool always passes. After changing `evals/connector-instructions.md`, run `node scripts/eval-instructions.mjs --write`.
 
 ## Source
 

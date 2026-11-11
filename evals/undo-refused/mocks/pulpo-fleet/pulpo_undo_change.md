@@ -1,0 +1,1 @@
+This change cannot be undone: Unidad 12 (V-0012) changed after it (Status is now «Baja», set by Ana Torres on 2026-11-11 11:20 in Pulpo), and undoing it would overwrite that. Nothing was changed. Tell the user; if they still want Status «En taller», that is a new change to propose with the vehicle's own tool.
