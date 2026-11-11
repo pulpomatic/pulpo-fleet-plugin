@@ -14,5 +14,6 @@ jobs:
         with:
           node-version: 22
       - run: node scripts/check-catalog.mjs
+      - run: node scripts/eval-default-mocks.mjs
       - run: node scripts/check-evals.mjs
       - run: node scripts/eval-instructions.mjs

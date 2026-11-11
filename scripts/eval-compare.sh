@@ -36,4 +36,5 @@ for (const name of Object.keys(W)) {
 }
 console.log(`${'overall'.padEnd(24)} ${pct(w.aggregates.overallScore)}    ${pct(c.aggregates.overallScore)}`);
 JS
-echo "results: $out"
+rm -rf "${bare:?}"
+echo "results (both runs' JSON): $out"

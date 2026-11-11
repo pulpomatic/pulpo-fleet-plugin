@@ -4,8 +4,9 @@
 // initialize). `--write` updates the cases; without it, exits 1 when a case is out of date (CI).
 import { readFileSync, readdirSync, writeFileSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
+import { fileURLToPath } from 'node:url';
 
-const evals = new URL('../evals/', import.meta.url).pathname;
+const evals = fileURLToPath(new URL('../evals/', import.meta.url));
 const TODAY = '2026-11-11';
 const instructions = readFileSync(join(evals, 'connector-instructions.md'), 'utf8').trim();
 const block = [

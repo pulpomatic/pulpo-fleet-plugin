@@ -1,1 +1,1 @@
-{"paymentMethodId": {{input.paymentMethodId}}, "authorized": 150.00, "used": 0, "available": 150.00, "currency": "MXN"}
+{"availableBalance": 150.00, "authorizedBalance": 150.00, "usedBalance": 0}
