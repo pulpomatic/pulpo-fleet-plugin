@@ -1,11 +1,11 @@
 {
-  "source": "pulpomatic/PULPO-FLEET-AGENT src/mcp/tool-annotations.ts @ 2011eecfd (+ pulpo_list_accounts, pulpo_select_account, pulpo_apply_change)",
+  "source": "pulpomatic/PULPO-FLEET-AGENT src/mcp/tool-annotations.ts @ 31d3375 (+ pulpo_list_accounts, pulpo_select_account, pulpo_apply_change, pulpo_list_my_changes, pulpo_undo_change)",
   "note": "One owner skill per tool. Other skills may name a tool too; the owner is where its rules live. Checked by scripts/check-catalog.mjs.",
   "tools": [
     {
       "name": "pulpo_apply_change",
       "kind": "destructive",
-      "owner": "pulpopay"
+      "owner": "getting-started"
     },
     {
       "name": "pulpo_archive_payment_methods",
@@ -903,6 +903,11 @@
       "owner": "maintenance-reminders"
     },
     {
+      "name": "pulpo_list_my_changes",
+      "kind": "read",
+      "owner": "getting-started"
+    },
+    {
       "name": "pulpo_list_odometers",
       "kind": "read",
       "owner": "vehicles"
@@ -1099,6 +1104,11 @@
     },
     {
       "name": "pulpo_unarchive_segment",
+      "kind": "write",
+      "owner": "getting-started"
+    },
+    {
+      "name": "pulpo_undo_change",
       "kind": "write",
       "owner": "getting-started"
     },
