@@ -1,6 +1,6 @@
 ---
 name: pulpopay
-description: PulpoPay, Pulpo's fuel card and payments product. Account status and balances, cards and their balances and movements, wallet movements, fuel load checks and compliance score, spending controls, funding requests from drivers and approving them, funding or withdrawing cards, locking cards, and the fleet's payment methods in general (any card: create, edit, status, archive). Money is involved: reads are free, every movement of money needs the user's approval in Pulpo's approval card, and every card change explicit confirmation. Use for any PulpoPay or fleet card question.
+description: PulpoPay, Pulpo's fuel card and payments product. Account status and balances, cards and their balances and movements, wallet movements, fuel load checks and compliance score, spending controls, funding requests from drivers and approving them, funding or withdrawing cards, locking cards, and the fleet's payment methods in general (any card: create, edit, status, archive). Money is involved: reads are free, every movement of money is only proposed and needs the user's approval (by default, the client's prompt to allow pulpo_apply_change, which shows the tool, rows and total), and every card change explicit confirmation. Use for any PulpoPay or fleet card question.
 ---
 
 # PulpoPay
