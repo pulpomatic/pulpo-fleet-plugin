@@ -603,11 +603,6 @@
       "owner": "pulpopay"
     },
     {
-      "name": "pulpo_get_pulpopay_physical_card",
-      "kind": "read",
-      "owner": "pulpopay"
-    },
-    {
       "name": "pulpo_get_pulpopay_recovered_invoices",
       "kind": "read",
       "owner": "pulpopay"
@@ -1005,11 +1000,6 @@
     {
       "name": "pulpo_pulpopay_activate_cards",
       "kind": "destructive",
-      "owner": "pulpopay"
-    },
-    {
-      "name": "pulpo_pulpopay_card_funding_healthcheck",
-      "kind": "read",
       "owner": "pulpopay"
     },
     {
