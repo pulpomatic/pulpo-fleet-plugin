@@ -2788,8 +2788,8 @@
       "description": "Last day, yyyy-MM-dd, inclusive"
      },
      "timeZone": {
-      "type": "string",
-      "description": "The account's IANA time zone, where days and months are cut, e.g. America/Mexico_City or Europe/Madrid. If you do not know it, ask the user."
+      "description": "The account's IANA time zone, where days and months are cut, e.g. America/Mexico_City or Europe/Madrid. Required unless the user's zone is already known to Pulpo's chat; if you do not know it, ask the user.",
+      "type": "string"
      },
      "groupBy": {
       "description": "expenseType (default), month, vehicle or supplier",
@@ -2815,8 +2815,7 @@
     },
     "required": [
      "from",
-     "to",
-     "timeZone"
+     "to"
     ],
     "$schema": "http://json-schema.org/draft-07/schema#"
    },
