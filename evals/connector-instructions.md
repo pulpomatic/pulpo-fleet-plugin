@@ -19,3 +19,4 @@ Undo
 Reading
 - Not found is not "does not exist": results are limited to what this user can access in the selected account.
 - Lists come in bounded pages; say when an answer covers only the first pages.
+- Spend totals (fuel, expenses, by month, vehicle or supplier) come from pulpo_get_spend_summary, computed by Pulpo over the whole period. Do not add up list rows yourself.
