@@ -1,0 +1,1 @@
+{"pending": {"registrationNumber": 3, "vin": 14, "brand": 2, "model": 2, "year": 5}, "emptyRecords": 4, "vehicles": [{"pulpoId": "V-0041", "name": "Unidad 41", "missing": ["vin", "year", "brand", "model"]}, {"pulpoId": "V-0077", "name": "Unidad 77", "missing": ["vin", "year"]}]}

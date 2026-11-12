@@ -25,7 +25,7 @@ description: Maintenance work orders, preventive maintenance plans and reminders
 
 ## Before any write
 
-The connector's write rules apply (it sends them with its instructions; summary in `getting-started`). What follows adds only this area's own rules.
+The connector's write rules apply (it sends them with its instructions; summary in `getting-started`). What follows adds only this area's own rules. Undo here: a maintenance or a reminder created here is undone with `pulpo_undo_change` (deleted again while nobody changed it), and a maintenance status change by writing the previous status back (Pulpo checks the status flow). Deletes and completed reminders cannot be undone.
 
 ## Maintenance writes
 
@@ -45,6 +45,6 @@ The connector's write rules apply (it sends them with its instructions; summary 
 - **Create:** `pulpo_create_reminder` needs `name`, `entityType`, `entityId`, `responsibleId`, `userIds` (users to notify, may be `[]`), plus `limitDate` (ISO 8601), `priorityId` (`low`, `medium` or `high`) and `notifications` (rules of channel `push` or `email`, an amount and a unit before the due date; `[]` for none). Ask who is responsible and who is notified; take user ids from `pulpo_get_users_catalog` or `pulpo_list_drivers`. Never guess a user id.
 - **Many at once:** `pulpo_create_reminders_massive` is asynchronous. Tell the user creation is queued, not done.
 - **Update:** read `pulpo_get_reminder_details`, merge, send all fields to `pulpo_update_reminder`.
-- **Complete:** `pulpo_complete_reminder`. It is a state change the user may want to undo, so still name the reminder in the question.
+- **Complete:** `pulpo_complete_reminder`. It cannot be undone from here, so name the reminder in the question.
 - **Delete:** `pulpo_delete_reminders` and `pulpo_delete_reminders_by_entity` are permanent; the second removes every reminder of that entity. List what will go before asking.
 - Expiry dates that Pulpo already tracks (insurance, ITV, license, contract) show up in `pulpo_get_vehicle_details`, `pulpo_get_vehicle_alerts` and `pulpo_list_drivers`; do not create a reminder that duplicates one unless the user asks.

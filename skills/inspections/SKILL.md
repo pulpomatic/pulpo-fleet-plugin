@@ -28,7 +28,7 @@ All checklist and inspection ids, field ids and tag ids are UUID strings. Only `
 
 ## Before any write
 
-The connector's write rules apply (it sends them with its instructions; summary in `getting-started`). What follows adds only this area's own rules.
+The connector's write rules apply (it sends them with its instructions; summary in `getting-started`). What follows adds only this area's own rules. Inspection writes have no automatic undo yet: their preview says so.
 
 ## Writes
 

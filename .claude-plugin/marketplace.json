@@ -10,7 +10,7 @@
       "name": "pulpo-fleet",
       "source": "./",
       "description": "Work with your Pulpo fleet from Claude: vehicles, drivers, fuel, expenses, maintenance, reminders, inspections and PulpoPay, with your own Pulpo permissions.",
-      "version": "1.1.1",
+      "version": "1.4.1",
       "category": "productivity"
     }
   ]

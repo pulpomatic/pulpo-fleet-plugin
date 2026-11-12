@@ -3,8 +3,9 @@
 // every tool has exactly one owner skill that names it, and no skill or README names a tool the server does not serve.
 import { readFileSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
+import { fileURLToPath } from 'node:url';
 
-const root = new URL('..', import.meta.url).pathname;
+const root = fileURLToPath(new URL('..', import.meta.url));
 const KINDS = new Set(['read', 'write', 'destructive', 'account']);
 const { tools } = JSON.parse(readFileSync(join(root, 'tools.json'), 'utf8'));
 const skills = Object.fromEntries(
