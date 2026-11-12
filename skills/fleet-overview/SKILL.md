@@ -41,8 +41,9 @@ Rules that save you from wrong answers:
 1. Call `pulpo_get_fleet_score`, `pulpo_get_vehicles_count` and `pulpo_get_fleet_basic_data_pending` (independent, run together). Add the filtered counts the question needs.
 2. Lead with the numbers: vehicles, score with how many are evaluated, what is missing.
 3. Then at most five attention items, ordered by consequence for the operation: inoperable vehicles, expired insurance or contracts, no driver, no recent odometer, missing basic data. Name vehicles by plate, name or Pulpo ID, and say how many more there are.
-4. Say what you did not check (a finding that is off, segments you cannot see, a page cut short).
-5. Offer the next step, not a data dump: open one vehicle, check its alerts, list upcoming maintenance (`maintenance-reminders`).
+4. If the user asks about costs too ("how much are we spending"), add last month's `pulpo_get_spend_summary` by expense type (`fuel-expenses` owns its rules) instead of reading expense lists.
+5. Say what you did not check (a finding that is off, segments you cannot see, a page cut short).
+6. Offer the next step, not a data dump: open one vehicle, check its alerts, list upcoming maintenance (`maintenance-reminders`).
 
 Fixing what the overview finds (filling data, changing status, assigning a driver) is done with the `vehicles` and `drivers-assignments` skills, with their write rules.
 

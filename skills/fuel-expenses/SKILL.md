@@ -14,8 +14,10 @@ description: Fuel loads and fleet expenses in Pulpo. Fuel and expense totals for
 
 Rules for numbers:
 
-- **No aggregate tool exists.** Totals come from the rows you read. Page through the period (`skip`, `take`) until the page comes back short, or state clearly that the figure covers only the rows read. Do not extrapolate. If you could not complete the period, give the partial figure, labelled as partial, and what is missing; do not call it the total.
-- Sum `total` (what was paid), not `subtotal`, unless asked. Keep currencies apart. Say the date range and the filters used.
+- **Totals come from `pulpo_get_spend_summary`**, computed by Pulpo over every expense of the period: by expense type (default; fuel is the type with `fuel: true`), `month`, `vehicle` or `supplier`, optionally for some `vehicleIds`. Pass the account's `timeZone` (IANA, e.g. `America/Mexico_City`, `Europe/Madrid`); if you do not know it, ask once. Report its `total`, `count` and groups as they are, with the period, the zone and its `includes`/`excludes` lines in your own words. Never add up `pulpo_list_expenses` or `pulpo_list_fuels` rows yourself.
+- Fuel loads are expenses of type Fuel, so fuel spend is that group, not a second sum on top. Maintenances count only when their status records an expense; for a maintenance's own cost read it with `pulpo_list_maintenances`.
+- If it refuses (more than 10,000 expenses, a period over a year, rows that changed while reading), say why and offer a shorter period or to ask again. Do not fall back to summing rows.
+- Liters, consumption and per-load questions still come from the fuel rows: list them for the user, labelled with the rows read.
 - Volume units follow the account's configuration (liters or gallons); do not convert silently.
 - Consumption or cost per km needs odometer readings: use `pulpo_get_odometers_history` for the vehicle and say which two readings the figure uses. Without readings, say you cannot compute it.
 - Compare like with like: a per-vehicle ranking in a mixed fleet (motorbikes next to trucks) is misleading. Compare within a vehicle type, or normalize first and say how.

@@ -1,5 +1,5 @@
 {
-  "source": "pulpomatic/PULPO-FLEET-AGENT src/mcp/tool-annotations.ts @ 31d3375 (+ pulpo_list_accounts, pulpo_select_account, pulpo_apply_change, pulpo_list_my_changes, pulpo_undo_change)",
+  "source": "pulpomatic/PULPO-FLEET-AGENT src/mcp/tool-annotations.ts @ 8b2f498 (PR #119) (+ pulpo_list_accounts, pulpo_select_account, pulpo_apply_change, pulpo_list_my_changes, pulpo_undo_change)",
   "note": "One owner skill per tool. Other skills may name a tool too; the owner is where its rules live. Checked by scripts/check-catalog.mjs.",
   "tools": [
     {
@@ -676,6 +676,11 @@
       "name": "pulpo_get_segments_by_ids",
       "kind": "read",
       "owner": "getting-started"
+    },
+    {
+      "name": "pulpo_get_spend_summary",
+      "kind": "read",
+      "owner": "fuel-expenses"
     },
     {
       "name": "pulpo_get_status_flow",
