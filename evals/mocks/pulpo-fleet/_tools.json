@@ -9785,7 +9785,7 @@
   },
   {
    "name": "pulpo_get_segment_tree",
-   "description": "Gets the hierarchical segment tree. Returns root nodes with nested children, including allowed/archived status per node. Use this as a pre-read before updating the tree with update_segment_tree.",
+   "description": "Gets the hierarchical segment tree. Returns root nodes with nested children, including allowed/archived status per node.",
    "inputSchema": {
     "type": "object",
     "properties": {},
@@ -9793,72 +9793,6 @@
    },
    "annotations": {
     "readOnlyHint": true
-   },
-   "execution": {
-    "taskSupport": "forbidden"
-   }
-  },
-  {
-   "name": "pulpo_update_segment_tree",
-   "description": "Updates the order and hierarchy of the segment tree. IMPORTANT: First call get_segment_tree to get the current hierarchy, then send the complete updated structure. The payload must include ALL nodes — any node omitted will be removed from the tree. Changes nothing by itself: it returns a preview built by Pulpo (current → new values, and whether it can be undone) for the user to approve (in Pulpo's approval card when the client shows one, otherwise in the chat). Once they approve, call pulpo_apply_change with the approvalId it returned. Pass language with the user's language for the preview. A change that can be undone is undone later with pulpo_undo_change.",
-   "inputSchema": {
-    "type": "object",
-    "properties": {
-     "payload": {
-      "type": "array",
-      "items": {
-       "$ref": "#/definitions/__schema0"
-      },
-      "description": "Complete tree structure with id, name, and segmentChilds for each node"
-     },
-     "language": {
-      "description": "The language the user writes in, for the preview text. Default en.",
-      "type": "string",
-      "enum": [
-       "en",
-       "es",
-       "fr",
-       "it",
-       "pt",
-       "pl"
-      ]
-     }
-    },
-    "required": [
-     "payload"
-    ],
-    "$schema": "http://json-schema.org/draft-07/schema#",
-    "definitions": {
-     "__schema0": {
-      "type": "object",
-      "properties": {
-       "id": {
-        "type": "number",
-        "description": "ID of the segment"
-       },
-       "name": {
-        "type": "string",
-        "description": "Name of the segment"
-       },
-       "segmentChilds": {
-        "type": "array",
-        "items": {
-         "$ref": "#/definitions/__schema0"
-        },
-        "description": "Child sub-segments"
-       }
-      },
-      "required": [
-       "id",
-       "name",
-       "segmentChilds"
-      ]
-     }
-    }
-   },
-   "annotations": {
-    "readOnlyHint": false,
-    "destructiveHint": true
    },
    "execution": {
     "taskSupport": "forbidden"
@@ -13307,7 +13241,6 @@
        "pulpo_delete_segment",
        "pulpo_archive_segment",
        "pulpo_unarchive_segment",
-       "pulpo_update_segment_tree",
        "pulpo_update_status_flow",
        "pulpo_create_supplier",
        "pulpo_update_supplier",

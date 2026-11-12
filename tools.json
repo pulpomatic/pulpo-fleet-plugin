@@ -1243,11 +1243,6 @@
       "owner": "getting-started"
     },
     {
-      "name": "pulpo_update_segment_tree",
-      "kind": "destructive",
-      "owner": "getting-started"
-    },
-    {
       "name": "pulpo_update_status_flow",
       "kind": "destructive",
       "owner": "getting-started"
