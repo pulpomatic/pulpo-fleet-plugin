@@ -1,6 +1,6 @@
 {
   "name": "pulpo-fleet",
-  "version": "1.4.2",
+  "version": "1.5.1",
   "description": "Work with your Pulpo fleet from Codex: vehicles, drivers, fuel, expenses, maintenance, reminders, inspections and PulpoPay, with your own Pulpo permissions. Every change is confirmed with you first.",
   "author": {
     "name": "Pulpo",
