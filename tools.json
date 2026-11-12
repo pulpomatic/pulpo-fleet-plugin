@@ -1,5 +1,5 @@
 {
-  "source": "pulpomatic/PULPO-FLEET-AGENT src/mcp/tool-annotations.ts @ 5152a66 (PR #119) (+ pulpo_list_accounts, pulpo_select_account, pulpo_apply_change, pulpo_list_my_changes, pulpo_undo_change)",
+  "source": "pulpomatic/PULPO-FLEET-AGENT src/mcp/tool-annotations.ts @ 8519c9d (PR #119) (+ pulpo_list_accounts, pulpo_select_account, pulpo_apply_change, pulpo_list_my_changes, pulpo_undo_change)",
   "note": "One owner skill per tool. Other skills may name a tool too; the owner is where its rules live. Checked by scripts/check-catalog.mjs.",
   "tools": [
     {
