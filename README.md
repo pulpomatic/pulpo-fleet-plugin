@@ -24,23 +24,43 @@ It contains no hooks or credentials, and it does not read your environment or fi
 
 ## Install
 
-**Claude Code and the Claude desktop app: paste this prompt**
+**Claude Code, the Claude desktop app and Codex: paste this prompt**
 
-Open Claude Code, or the Code tab of the desktop app, and paste:
+Open Claude Code, the Code tab of the desktop app, or Codex, and paste the same prompt. The assistant runs the commands for its own app and asks you to allow each one.
 
-> Install the Pulpo Fleet plugin for Claude. Run these two commands, one after the other:
+> Install Pulpo Fleet (https://github.com/pulpomatic/pulpo-fleet-plugin) in the app you are running in.
+>
+> If you are Claude Code or the Code tab of the Claude desktop app, run these two commands, one after the other:
 > `claude plugin marketplace add pulpomatic/pulpo-fleet-plugin`
 > `claude plugin install pulpo-fleet@pulpo`
-> If either one fails, show me the error as it is and do not try anything else. When both finish, tell me to restart Claude. After the restart, my first question about Pulpo will ask me to sign in with my Pulpo user.
+>
+> If you are Codex, run these three commands, one after the other:
+> `codex plugin marketplace add pulpomatic/pulpo-fleet-plugin`
+> `codex plugin add pulpo-fleet@pulpo`
+> `codex mcp add pulpo-fleet --url https://eu1.getpulpo.com/mcp`
+>
+> If you cannot run commands here (claude.ai, the Claude desktop chat, ChatGPT), run nothing. Tell me to add a custom connector with the URL https://eu1.getpulpo.com/mcp, and on Claude to choose "Use Claude's published identity" for sign-in.
+>
+> If a command fails, show me the error as it is and do not try anything else. When you finish, tell me to restart the app. My first question about Pulpo will ask me to sign in with my Pulpo user.
 
 En español:
 
-> Instala el plugin Pulpo Fleet para Claude. Ejecuta estos dos comandos, uno detrás de otro:
+> Instala Pulpo Fleet (https://github.com/pulpomatic/pulpo-fleet-plugin) en la app donde estás.
+>
+> Si eres Claude Code o la pestaña Code de la app de escritorio de Claude, ejecuta estos dos comandos, uno detrás de otro:
 > `claude plugin marketplace add pulpomatic/pulpo-fleet-plugin`
 > `claude plugin install pulpo-fleet@pulpo`
-> Si alguno falla, enséñame el error tal cual y no intentes otra cosa. Cuando terminen, dime que reinicie Claude. Después de reiniciar, mi primera pregunta sobre Pulpo me pedirá iniciar sesión con mi usuario de Pulpo.
+>
+> Si eres Codex, ejecuta estos tres comandos, uno detrás de otro:
+> `codex plugin marketplace add pulpomatic/pulpo-fleet-plugin`
+> `codex plugin add pulpo-fleet@pulpo`
+> `codex mcp add pulpo-fleet --url https://eu1.getpulpo.com/mcp`
+>
+> Si aquí no puedes ejecutar comandos (claude.ai, el chat de la app de escritorio de Claude, ChatGPT), no ejecutes nada. Dime que añada un conector personalizado con la URL https://eu1.getpulpo.com/mcp y, en Claude, que elija "Use Claude's published identity" para iniciar sesión.
+>
+> Si un comando falla, enséñame el error tal cual y no intentes otra cosa. Cuando termines, dime que reinicie la app. Mi primera pregunta sobre Pulpo me pedirá iniciar sesión con mi usuario de Pulpo.
 
-Claude asks you to allow each command before it runs. To type them yourself instead, in Claude Code:
+To type the commands yourself instead, in Claude Code:
 
 ```
 /plugin marketplace add pulpomatic/pulpo-fleet-plugin
@@ -53,7 +73,7 @@ The first Pulpo question opens the Pulpo sign-in. The desktop app then lists Pul
 
 A chat on claude.ai cannot run commands, so add the server as a custom connector: **Settings → Connectors → Add custom connector**, URL `https://eu1.getpulpo.com/mcp`, and for sign-in choose **Use Claude's published identity**. Without that choice Claude has no way to start the Pulpo sign-in and never shows Connect. On Claude Team and Enterprise an owner adds it once for the organization; then each person connects their own Pulpo user. The connector gets every tool and the server's instructions, not the skills. [Claude custom connector guide](https://support.claude.com/en/articles/11175166-get-started-with-custom-connectors-using-remote-mcp)
 
-**Codex**
+**Codex, typing the commands yourself**
 
 ```
 codex plugin marketplace add pulpomatic/pulpo-fleet-plugin
@@ -61,7 +81,7 @@ codex plugin add pulpo-fleet@pulpo
 codex mcp add pulpo-fleet --url https://eu1.getpulpo.com/mcp
 ```
 
-The last command signs you in to Pulpo. Run it even though the plugin already declares the server: Codex (checked with 0.166) exposes only part of the server's tools when the server comes from a plugin, and the entry with the same name makes it load all of them. The plugin still provides the skills.
+The last command signs you in to Pulpo. Run it even though the plugin already declares the server: Codex (checked with 0.166; the commands still work on 0.169) exposes only part of the server's tools when the server comes from a plugin, and the entry with the same name makes it load all of them. The plugin still provides the skills.
 
 Nothing needs to be configured: sign-in is OAuth through Pulpo's identity provider (Auth0), with no client secret and no API key to copy.
 
