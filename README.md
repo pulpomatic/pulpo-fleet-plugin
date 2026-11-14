@@ -24,14 +24,34 @@ It contains no hooks or credentials, and it does not read your environment or fi
 
 ## Install
 
-**Claude Code**
+**Claude Code and the Claude desktop app: paste this prompt**
+
+Open Claude Code, or the Code tab of the desktop app, and paste:
+
+> Install the Pulpo Fleet plugin for Claude. Run these two commands, one after the other:
+> `claude plugin marketplace add pulpomatic/pulpo-fleet-plugin`
+> `claude plugin install pulpo-fleet@pulpo`
+> If either one fails, show me the error as it is and do not try anything else. When both finish, tell me to restart Claude. After the restart, my first question about Pulpo will ask me to sign in with my Pulpo user.
+
+En español:
+
+> Instala el plugin Pulpo Fleet para Claude. Ejecuta estos dos comandos, uno detrás de otro:
+> `claude plugin marketplace add pulpomatic/pulpo-fleet-plugin`
+> `claude plugin install pulpo-fleet@pulpo`
+> Si alguno falla, enséñame el error tal cual y no intentes otra cosa. Cuando terminen, dime que reinicie Claude. Después de reiniciar, mi primera pregunta sobre Pulpo me pedirá iniciar sesión con mi usuario de Pulpo.
+
+Claude asks you to allow each command before it runs. To type them yourself instead, in Claude Code:
 
 ```
 /plugin marketplace add pulpomatic/pulpo-fleet-plugin
 /plugin install pulpo-fleet@pulpo
 ```
 
-Then run any Pulpo question; Claude opens the Pulpo sign-in the first time. On Claude web (claude.ai) and the desktop app, add Pulpo Fleet as a custom connector (**Settings → Connectors → Add custom connector**: `https://eu1.getpulpo.com/mcp`). The custom connector receives all tools and server instructions directly; bundled skills are loaded when using Claude Code or Codex. [Claude custom connector guide](https://support.claude.com/en/articles/11175166-get-started-with-custom-connectors-using-remote-mcp)
+The first Pulpo question opens the Pulpo sign-in. The desktop app then lists Pulpo Fleet with its eight skills and its connector.
+
+**Claude web (claude.ai), without the plugin**
+
+A chat on claude.ai cannot run commands, so add the server as a custom connector: **Settings → Connectors → Add custom connector**, URL `https://eu1.getpulpo.com/mcp`, and for sign-in choose **Use Claude's published identity**. Without that choice Claude has no way to start the Pulpo sign-in and never shows Connect. On Claude Team and Enterprise an owner adds it once for the organization; then each person connects their own Pulpo user. The connector gets every tool and the server's instructions, not the skills. [Claude custom connector guide](https://support.claude.com/en/articles/11175166-get-started-with-custom-connectors-using-remote-mcp)
 
 **Codex**
 
