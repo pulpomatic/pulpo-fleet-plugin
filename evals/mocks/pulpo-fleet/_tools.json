@@ -2788,7 +2788,7 @@
       "description": "Last day, yyyy-MM-dd, inclusive"
      },
      "timeZone": {
-      "description": "The account's IANA time zone, where days and months are cut, e.g. America/Mexico_City or Europe/Madrid. Required unless the user's zone is already known to Pulpo's chat; if you do not know it, ask the user.",
+      "description": "IANA time zone where days and months are cut, e.g. America/Mexico_City or Europe/Madrid. Leave it out to use the chat's zone when there is one, otherwise the account's zone in Pulpo; pass it only when the user names another.",
       "type": "string"
      },
      "groupBy": {
