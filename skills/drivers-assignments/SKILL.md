@@ -13,6 +13,7 @@ Drivers are users of type Driver. This connector creates, updates and deletes dr
   - Licenses expiring in a window: `{"AND":[{"parent":"user","licenseExpiration":{"range":["2026-06-01","2026-07-01"]}}]}`
   - Active drivers with no vehicle: `{"AND":[{"parent":"accountUser","userStatus":{"is":60}},{"parent":"vehicleAssignment","hasVehicleAssignment":{"empty":null}}]}`
   - `take` defaults to 10; say when you stopped at a page.
+- **Driver policy:** Read an existing PDF with `pulpo_get_driver_policy_source`, then propose distribution to selected drivers with `pulpo_distribute_policy_document`; delivery cannot be recalled automatically. Use `pulpo_get_driver_policy_status` to check acceptance; a pending response is not acceptance.
 - **Profile:** `pulpo_get_driver_details` with the numeric user id from the list (license, assigned vehicle, segments, tags). By email: `pulpo_get_user_by_email`. Lightweight id/name list of active users: `pulpo_get_users_catalog`. Which drivers have which unit: `pulpo_list_user_fleets`.
 - **Catalogs:** `pulpo_get_user_statuses` (status ids), `pulpo_get_user_types`. Never hard-code a type or status id; read it.
 - **Documents:** two different things. *Compliance documents* (license, permits, certificates): `pulpo_list_documents`, `pulpo_get_document_details` (metadata plus Base64 content; do not print the content). *Files and folders of an entity*: `pulpo_list_document_archives` and the folder tools below.

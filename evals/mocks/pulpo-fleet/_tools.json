@@ -13326,6 +13326,96 @@
    "execution": {
     "taskSupport": "forbidden"
    }
+  },
+  {
+   "name": "pulpo_get_driver_policy_source",
+   "description": "Read the title, UUID, SHA-256 and size of an existing Pulpo PDF before distributing it. The account must be administered by the current user.",
+   "inputSchema": {
+    "type": "object",
+    "properties": {
+     "documentId": {
+      "type": "string",
+      "format": "uuid"
+     }
+    },
+    "required": [
+     "documentId"
+    ],
+    "additionalProperties": false,
+    "$schema": "http://json-schema.org/draft-07/schema#"
+   },
+   "annotations": {
+    "readOnlyHint": true
+   },
+   "execution": {
+    "taskSupport": "forbidden"
+   }
+  },
+  {
+   "name": "pulpo_get_driver_policy_status",
+   "description": "Read a policy version and its assigned drivers and acceptance timestamps. Null means pending; this read does not accept a policy.",
+   "inputSchema": {
+    "type": "object",
+    "properties": {
+     "versionId": {
+      "type": "string",
+      "format": "uuid"
+     }
+    },
+    "required": [
+     "versionId"
+    ],
+    "additionalProperties": false,
+    "$schema": "http://json-schema.org/draft-07/schema#"
+   },
+   "annotations": {
+    "readOnlyHint": true
+   },
+   "execution": {
+    "taskSupport": "forbidden"
+   }
+  },
+  {
+   "name": "pulpo_distribute_policy_document",
+   "description": "Assign an existing PDF version to selected drivers in their Pulpo app. Delivery cannot be recalled automatically. Use the returned version ID to check status; this does not accept on behalf of drivers.",
+   "inputSchema": {
+    "type": "object",
+    "properties": {
+     "documentId": {
+      "type": "string",
+      "format": "uuid",
+      "description": "UUID of an existing Pulpo PDF"
+     },
+     "driverIds": {
+      "type": "array",
+      "items": {
+       "type": "integer",
+       "exclusiveMinimum": 0
+      },
+      "minItems": 1,
+      "maxItems": 100
+     },
+     "sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$",
+      "description": "Digest from an earlier source read, if supplied; a changed PDF requires a new preview"
+     }
+    },
+    "required": [
+     "documentId",
+     "driverIds"
+    ],
+    "additionalProperties": false,
+    "$schema": "http://json-schema.org/draft-07/schema#"
+   },
+   "annotations": {
+    "readOnlyHint": false,
+    "destructiveHint": true,
+    "idempotentHint": false
+   },
+   "execution": {
+    "taskSupport": "forbidden"
+   }
   }
  ]
 }
