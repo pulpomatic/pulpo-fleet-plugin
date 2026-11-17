@@ -333,11 +333,6 @@
       "owner": "pulpopay"
     },
     {
-      "name": "pulpo_distribute_policy_document",
-      "kind": "destructive",
-      "owner": "drivers-assignments"
-    },
-    {
       "name": "pulpo_export_drivers",
       "kind": "read",
       "owner": "getting-started"
@@ -404,16 +399,6 @@
     },
     {
       "name": "pulpo_get_driver_details",
-      "kind": "read",
-      "owner": "drivers-assignments"
-    },
-    {
-      "name": "pulpo_get_driver_policy_source",
-      "kind": "read",
-      "owner": "drivers-assignments"
-    },
-    {
-      "name": "pulpo_get_driver_policy_status",
       "kind": "read",
       "owner": "drivers-assignments"
     },
