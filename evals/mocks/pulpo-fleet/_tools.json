@@ -1187,127 +1187,6 @@
    }
   },
   {
-   "name": "pulpo_save_custom_fields",
-   "description": "Create or update the custom fields configuration for a module type (UPSERT). This REPLACES the entire configuration for that type — it is a full replacement, not a merge. ALWAYS call get_custom_fields first to get the current configuration, then merge with new fields and send the complete fields array. controlType values: \"text\", \"currency\", \"number\", \"checkbox\", \"select\", \"date\", \"textarea\", \"autocomplete\", \"time\", \"multiple-select\", \"system\", \"signature\", \"photo\". Changes nothing by itself: it returns a preview built by Pulpo (current → new values, and whether it can be undone) for the user to approve (in Pulpo's approval card when the client shows one, otherwise in the chat). Once they approve, call pulpo_apply_change with the approvalId it returned. Pass language with the user's language for the preview. A change that can be undone is undone later with pulpo_undo_change.",
-   "inputSchema": {
-    "type": "object",
-    "properties": {
-     "type": {
-      "type": "string",
-      "enum": [
-       "vehicles",
-       "users",
-       "expenses",
-       "scheduled_expenses",
-       "maintenances",
-       "catalog_maintenance_task",
-       "fuels",
-       "payment_methods",
-       "contracts"
-      ],
-      "description": "Module type to save custom fields for"
-     },
-     "fields": {
-      "type": "array",
-      "items": {
-       "type": "object",
-       "properties": {
-        "name": {
-         "type": "string",
-         "description": "Technical field name (logical ID, e.g. \"cf_color\")"
-        },
-        "label": {
-         "type": "string",
-         "description": "Visible display label for the field"
-        },
-        "controlType": {
-         "type": "string",
-         "enum": [
-          "text",
-          "currency",
-          "number",
-          "checkbox",
-          "select",
-          "date",
-          "textarea",
-          "autocomplete",
-          "time",
-          "multiple-select",
-          "system",
-          "signature",
-          "photo"
-         ],
-         "description": "UI control type"
-        },
-        "sectionName": {
-         "type": "string",
-         "description": "Section where the field is visually grouped"
-        },
-        "isRequired": {
-         "description": "Whether the field is required",
-         "type": "boolean"
-        },
-        "hidden": {
-         "description": "Whether the field is hidden in the UI",
-         "type": "boolean"
-        },
-        "options": {
-         "description": "Options for select/multiple-select controls. Note: options is not documented in the API spec but is accepted by the backend for select/multiple-select field types.",
-         "type": "array",
-         "items": {
-          "type": "object",
-          "properties": {
-           "value": {
-            "type": "string"
-           },
-           "label": {
-            "type": "string"
-           }
-          },
-          "required": [
-           "value",
-           "label"
-          ]
-         }
-        }
-       },
-       "required": [
-        "name",
-        "label",
-        "controlType",
-        "sectionName"
-       ]
-      },
-      "description": "Complete array of custom field definitions (full replacement — send all fields including unchanged ones)"
-     },
-     "language": {
-      "description": "The language the user writes in, for the preview text. Default en.",
-      "type": "string",
-      "enum": [
-       "en",
-       "es",
-       "fr",
-       "it",
-       "pt",
-       "pl"
-      ]
-     }
-    },
-    "required": [
-     "type",
-     "fields"
-    ],
-    "$schema": "http://json-schema.org/draft-07/schema#"
-   },
-   "annotations": {
-    "readOnlyHint": false,
-    "destructiveHint": true
-   },
-   "execution": {
-    "taskSupport": "forbidden"
-   }
-  },
-  {
    "name": "pulpo_get_custom_field_sections",
    "description": "Get the available section names for custom fields of a specific module type. Use this to discover what sections exist before creating or updating custom fields.",
    "inputSchema": {
@@ -13229,7 +13108,6 @@
        "pulpo_update_checklist_answer",
        "pulpo_delete_checklist_answer",
        "pulpo_verify_checklist_answer",
-       "pulpo_save_custom_fields",
        "pulpo_create_driver",
        "pulpo_assign_driver",
        "pulpo_update_driver",

@@ -1088,11 +1088,6 @@
       "owner": "getting-started"
     },
     {
-      "name": "pulpo_save_custom_fields",
-      "kind": "destructive",
-      "owner": "getting-started"
-    },
-    {
       "name": "pulpo_search_knowledge_base",
       "kind": "read",
       "owner": "getting-started"
