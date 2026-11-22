@@ -11618,6 +11618,50 @@
    }
   },
   {
+   "name": "pulpo_request_odometer",
+   "description": "Ask the driver of one vehicle, through the driver app, for its current odometer: they get a notification and answer with a photo of the dashboard. When the user asks for it, call it right away: do not ask for confirmation or for any other data, it only needs the vehicle. If the vehicle already has a pending request, nothing is sent and the result says since when it is pending: ask the user whether to send another one, and only after a plain yes call it again with the same vehicleId and resend: true. Changes nothing by itself: it returns a preview built by Pulpo (current → new values, and whether it can be undone) for the user to approve (in Pulpo's approval card when the client shows one, otherwise in the chat). Once they approve, call pulpo_apply_change with the approvalId it returned. Pass language with the user's language for the preview. A change that can be undone is undone later with pulpo_undo_change.",
+   "inputSchema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+     "vehicleId": {
+      "type": "integer",
+      "exclusiveMinimum": 0,
+      "maximum": 9007199254740991,
+      "description": "Vehicle identifier"
+     },
+     "resend": {
+      "description": "Send another request over the pending one. Only after the user said yes to sending another one.",
+      "type": "boolean"
+     },
+     "language": {
+      "description": "The language the user writes in, for the preview text. Default en.",
+      "type": "string",
+      "enum": [
+       "en",
+       "es",
+       "fr",
+       "it",
+       "pt",
+       "pl"
+      ]
+     }
+    },
+    "required": [
+     "vehicleId"
+    ],
+    "additionalProperties": false
+   },
+   "annotations": {
+    "readOnlyHint": false,
+    "destructiveHint": false,
+    "openWorldHint": true
+   },
+   "execution": {
+    "taskSupport": "forbidden"
+   }
+  },
+  {
    "name": "pulpo_create_odometer",
    "description": "Register a new odometer reading for a vehicle. Provide exactly one unit: km, mi, or hrs. registrationDate is the effective date/time of the reading (ISO 8601). Changes nothing by itself: it returns a preview built by Pulpo (current → new values, and whether it can be undone) for the user to approve (in Pulpo's approval card when the client shows one, otherwise in the chat). Once they approve, call pulpo_apply_change with the approvalId it returned. Pass language with the user's language for the preview. A change that can be undone is undone later with pulpo_undo_change.",
    "inputSchema": {

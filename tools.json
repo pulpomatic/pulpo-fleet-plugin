@@ -1083,6 +1083,11 @@
       "owner": "drivers-assignments"
     },
     {
+      "name": "pulpo_request_odometer",
+      "kind": "write",
+      "owner": "vehicles"
+    },
+    {
       "name": "pulpo_resolve_catalog_id",
       "kind": "read",
       "owner": "getting-started"
